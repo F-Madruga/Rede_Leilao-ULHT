@@ -26,6 +26,10 @@ public class Licitador {
         return plafond;
     }
 
+    public boolean estaConectado() {
+        return conectado;
+    }
+
     public boolean conectar(String password) {
         if (this.password.equals(password)) {
             conectado = true;

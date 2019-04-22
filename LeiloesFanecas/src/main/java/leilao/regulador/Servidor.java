@@ -3,6 +3,7 @@ package leilao.regulador;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import leilao.Autenticacao;
 import leilao.Pedido;
+import leilao.SHA256;
 import leilao.licitador.Licitador;
 
 import java.io.BufferedReader;
@@ -13,6 +14,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Servidor {
 
@@ -27,10 +29,20 @@ public class Servidor {
 
     public void start() throws IOException {
         System.out.println("Servidor inicializado");
+        Thread threadRegistarLicitadores = new Thread(new Runnable() {
+            public void run() {
+                try {
+                    registarLicitadores();
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        threadRegistarLicitadores.start();
         while (true) {
             clientSocket = serverSocket.accept();
             System.out.println("Nova conexão");
-            Thread thread = new Thread(new Runnable() {
+            Thread threadRedirecionarPedidos = new Thread(new Runnable() {
                 public void run() {
                     try {
                         reendirecionarPedido(clientSocket);
@@ -39,7 +51,42 @@ public class Servidor {
                     }
                 }
             });
-            thread.start();
+            threadRedirecionarPedidos.start();
+        }
+    }
+
+    public void registarLicitadores() throws NoSuchAlgorithmException {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            String username;
+            do {
+                System.out.println("Insira um username");
+                username = scanner.nextLine();
+                if (licitadores.containsKey(username)) {
+                    System.out.println("O username " + username + " já existe");
+                }
+            } while (licitadores.containsKey(username));
+            System.out.println("Insira uma password");
+            String password = SHA256.generate(scanner.nextLine().getBytes());
+            String plafond;
+            do {
+                System.out.println("Insira o seu plafond");
+                plafond = scanner.nextLine();
+            } while (!verificarSeDouble(plafond));
+            Licitador licitador = new Licitador(username, password, Double.parseDouble(plafond));
+            licitadores.put(licitador.getUsername(), licitador);
+            //todo Atualizar ficheiro de utilizadores
+            System.out.println("Utilizador registado");
+        }
+    }
+
+    public boolean verificarSeDouble(String string) {
+        try {
+            Double.parseDouble(string);
+            return true;
+        } catch (NumberFormatException e) {
+            System.out.println("Resposta inválida");
+            return false;
         }
     }
 
@@ -58,15 +105,18 @@ public class Servidor {
                     break;
                 case 2:
                     //Licitacao
+                    enviarNotificacoes("Work in progress", socket);
                     break;
                 case 3:
                     //PedidoCriarLeilao
+                    enviarNotificacoes("Work in progress", socket);
                     break;
                 case 4:
                     //ListaLeiloes
+                    enviarNotificacoes("Work in progress", socket);
                     break;
                 case 5:
-                    //Plafond
+                    responderPlafond(new Pedido(pedido[0], 5), socket);
                     break;
                 default:
                     enviarNotificacoes("Comando inválido", socket);
@@ -74,13 +124,20 @@ public class Servidor {
         } while (Integer.parseInt(pedido[1]) != 0);
     }
 
+    public void responderPlafond(Pedido pedido, Socket socket) throws IOException {
+        enviarNotificacoes(Double.toString(licitadores.get(pedido.getUsername()).getPlafond()), socket);
+    }
+
     public void responderAutenticacao(Autenticacao pedido, Socket socket) throws IOException, NoSuchAlgorithmException {
-        if (!licitadores.containsKey(pedido.getUsername())) {
-            if (licitadores.get(pedido.getUsername()).conectar(pedido.getPassword())) {
-                enviarNotificacoes("Utilizador verificado", socket);
+        if (licitadores.containsKey(pedido.getUsername())) {
+            if (!licitadores.get(pedido.getUsername()).conectar(pedido.getPassword())) {
+                enviarNotificacoes("Password incorreta", socket);
+            }
+            else if (!licitadores.get(pedido.getUsername()).estaConectado()) {
+                enviarNotificacoes("O utilizador já está autenticado", socket);
             }
             else {
-                enviarNotificacoes("Password incorreta", socket);
+                enviarNotificacoes("Utilizador verificado", socket);
             }
         }
         else {

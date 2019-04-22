@@ -41,9 +41,9 @@ public class Cliente {
     }
 
     public void receberNotificacoes() throws IOException {
-        byte[] buffer = new byte[256];
         String messagem;
         do {
+            byte[] buffer = new byte[256];
             DatagramPacket pacote = new DatagramPacket(buffer, buffer.length);
             inputSocket.receive(pacote);
             messagem = new String(pacote.getData()).trim();
@@ -88,9 +88,9 @@ public class Cliente {
 
     public void autenticar() throws IOException {
         Scanner scanner = new Scanner(System.in);
-        byte[] buffer = new byte[256];
         String resposta;
         do {
+            byte[] buffer = new byte[256];
             System.out.println("Insira o seu username");
             username = scanner.nextLine();
             System.out.println("Insira a sua password");
