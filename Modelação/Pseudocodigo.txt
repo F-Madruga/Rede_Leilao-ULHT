@@ -1,0 +1,219 @@
+class Cliente {
+
+	String username;
+	String ip;
+	int porta;
+	boolean conectado;
+
+	Cliente(ip, porta);
+
+	star() {
+		while (!autenticar());
+		Thread.run {
+			receberNotificacoes();
+		}
+		fazerPedidos();
+	}
+
+	void fazerPedidos() {
+		String pedido = scanner.nextline;
+		while (pedido != quit) {
+		Pedido pedido;
+			if (pedido == "lista de leiloes") {
+				pedido = pedirLeiloes();
+			}
+			else if (pedido == "plafond") {
+				pedido = pedirPlafond();
+			}
+			else if (pedido == "criar leilao") {
+				pedido = criarLeilao();
+			}
+			else if (pedido == licitar){
+				pedido = fazerLicitacao();
+			}
+			else {
+				pedido = null;
+				Print("O comando não existe por favor experimente outro");
+			}
+			if (pedido != null) {
+				enviar pedido ao servidor
+			}
+		}
+		conectado = false;
+	}
+
+	boolean autenticar() {
+		this.username = scanner.nextline;
+		String password = scanner.nextline;
+		Autenticacao atenticacao = new Autenticacao(this.username, password);
+		enviar para o servidor autenticacao
+		esperar resposta
+		if (resposta == verificado) {
+			return true;
+		}
+		return false;
+	}
+
+	void receberNotificacoes() { //O servidor envia as notificações de forma sincronizada
+	conectado = true;
+		while (conectado) {
+			receber mensagens do servidor
+		}
+	}
+
+	Pedido pedirLeiloes() {
+		return new Pedido(this.username, 2); //presumindo que o tipo 2 é o pedido de leiloes
+	}
+
+	Pedido pedirPlafond() {
+	return new Pedido(this.username, 1); //presumindo que o tipo 1 é o pedido de plafond
+	}
+
+	PedidoCriarLeilao criarLeilao() {
+		String objeto = scanner.nextline;
+		return new PedidoCriarLeilao(this.username, objeto);
+	}
+
+	Licitacao fazerLicitacao() {
+		int idLeilao = toInt(scanner.nextline);
+		double quantia = toDouble(scanner.nextline);
+		return new Licitacao(this.username, quantia, idLeilao);
+	}
+}
+
+class Pedido {
+	String autor;
+	int tipo;
+
+	Pedido(String autor, int tipo);
+
+	//metodos gets
+}
+
+class Licitacao extends Pedido {
+	double quantia;
+	int idLeilao;
+
+	Licitacao(String autor, double quantia, int idLeilao) {
+		this.tipo = 3; //herdado de pedido
+	}
+
+	//Metodos get
+}
+
+class PedidoCriarLeilao extends Pedido {
+	Stirng objeto
+
+	Licitacao(String autor, String objeto) {
+		this.tipo = 4; //herdado de pedido
+	}
+
+	//Metodos get
+}
+
+class Autenticacao extends Pedido {
+	Stirng password
+
+	Licitacao(String autor, String password) {
+		this.tipo = 5; //herdado de pedido
+	}
+
+	//Metodos get
+}
+
+class Licitador {
+	String username;
+	String password;
+	double plafond;
+	boolean conectado;
+
+	Licitador(String username, String password, double plafond);
+
+	boolean checkClient(String password, Socket socket) {
+		if (thos.password = password) {
+			conectado = true;
+			return true;
+		}
+		return false;
+	}
+
+	//Metodos get
+}
+
+class Leilao {
+	int id;
+	String autor;
+	String objeto;
+	List<Licitacao> licitacoes;
+
+	Leilao(int id, String autor, String objeto);
+
+	boolean receberLicitacao(Licitacao licitacao) {
+		if (licitacao.getQuantia > getMaiorLicitacao.getQuantia()) {
+			licitacoes.add(licitacao);
+			return true;
+		}
+		return false;
+	}
+	override
+	boolean equals();
+
+	Licitacao getMaiorLicitacao() {
+		return licitacoes.get(licitacoes.size - 1); //a ultima licitacao é a ultima
+	}
+
+	//Metodos get
+}
+
+class Servidor() {
+
+	String ip;
+	Map<String, Licitador> licitadores;
+	Set<Leilao> leiloes;
+	ServerSocket serverSocket;
+	Socket clientSocket;
+
+	Servidor(String ip);
+
+	void start() {
+		boolean ficheiroUtilizadoresLido = false;
+		boolean ficheiroLeiloesLido = false;
+		Thread.run {
+			lerFicheiroUtilizadores(); //le, cria objetos do tipo Licitador e adiciona-os ao Map licitadores
+			ficheiroUtilizadoresLido = true;
+		}
+		Thread.run {
+			lerFicheiroLeiloes(); //le, cria objetos do tipo Leilao e adiciona-os ao Set leiloes
+			ficheiroLeiloesLido = true;
+		}
+		while (!ficheiroUtilizadoresLido || !ficheiroLeiloesLido); //Tem de esperar os dois ficheiros serem lidos
+		while (true) {
+			clientScoket = serverSocket.acept();
+			Thread.run {
+				redirecionarPedido(clientSocket);
+			}
+		}
+	}
+
+	void redirecionarPedido(Socket socket) {
+		Lê pedido e cria um objeto do tipo pedido
+		if (pedido.getTipo() == 1) {
+			responderPlafond(pedido, socket);
+		}
+		else if (pedido.getTipo() == 2) {
+			responderPedirLeiloes(pedido, socket);
+		}
+		else if (pedido.getTipo() == 3) {
+			responderPedidoLicitacao(pedido, socket);
+		}
+		else if (pedido.getTipo() == 4) {
+			responderPedidoCriarLeilao(pedido, socket);
+		}
+		else if (pedido.getTipo() == 5) {
+			responderPedidoAutenticacao(pedido, socket);
+		}
+		else {
+			//pedido não existe
+		}
+	}
+}
