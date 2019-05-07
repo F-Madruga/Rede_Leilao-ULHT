@@ -1,20 +1,15 @@
 package leilao.regulador;
 
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import leilao.Autenticacao;
 import leilao.Pedido;
 import leilao.SHA256;
 import leilao.licitador.Licitador;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Servidor {
 
@@ -22,8 +17,8 @@ public class Servidor {
     private Socket clientSocket;
     private Map<String, Licitador> licitadores;
 
-    public Servidor(String ip) throws IOException {
-        serverSocket = new ServerSocket(3000);
+    public Servidor(int port) throws IOException {
+        serverSocket = new ServerSocket(port);
         licitadores = new HashMap<String, Licitador>();
     }
 
@@ -41,7 +36,6 @@ public class Servidor {
         threadRegistarLicitadores.start();
         while (true) {
             clientSocket = serverSocket.accept();
-            System.out.println("Nova conexão");
             Thread threadRedirecionarPedidos = new Thread(new Runnable() {
                 public void run() {
                     try {
@@ -105,15 +99,15 @@ public class Servidor {
                     break;
                 case 2:
                     //Licitacao
-                    enviarNotificacoes("Work in progress", socket);
+                    enviarNotificacoes("Licitar ainda não está disponivel", socket);
                     break;
                 case 3:
                     //PedidoCriarLeilao
-                    enviarNotificacoes("Work in progress", socket);
+                    enviarNotificacoes("Criar leilão ainda não está disponivel", socket);
                     break;
                 case 4:
                     //ListaLeiloes
-                    enviarNotificacoes("Work in progress", socket);
+                    enviarNotificacoes("Listar leilões ainda não está disponivel", socket);
                     break;
                 case 5:
                     responderPlafond(new Pedido(pedido[0], 5), socket);
