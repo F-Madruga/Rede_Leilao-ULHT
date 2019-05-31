@@ -7,7 +7,7 @@ public class Autenticacao extends Pedido {
     private String password;
 
     public Autenticacao (String username, String password) {
-        super(username, 1);
+        super(username, Pedido.AUTENTICACAO);
         this.password = password;
     }
 

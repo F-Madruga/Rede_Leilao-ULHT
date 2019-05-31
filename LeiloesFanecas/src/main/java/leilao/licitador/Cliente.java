@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.Socket;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Cliente {
@@ -81,7 +82,7 @@ public class Cliente {
                 }
             }
             else {
-                output.println(new Pedido(username, 0));
+                output.println(new Pedido(username, Pedido.QUIT));
             }
         } while (!resposta.equals("quit"));
     }
@@ -103,17 +104,26 @@ public class Cliente {
     }
 
     public void pedirLeiloes() {
-        output.println(new Pedido(username, 4));
+        output.println(new Pedido(username, Pedido.LISTAR_LEILAO));
     }
 
     public void pedirPlafond() {
-        output.println(new Pedido(username, 5));
+        output.println(new Pedido(username, Pedido.PLAFOND));
     }
 
     public void criarLeilao() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Descreve o objeto que quer leiloar");
-        output.println(new PedidoCriarLeilao(username, scanner.nextLine()));
+        String objeto = scanner.nextLine();
+        System.out.println("Insira o dia de fecho do leilão");
+        int dia = Integer.parseInt(scanner.nextLine());
+        System.out.println("Insira o mes de fecho do leilão");
+        int mes = Integer.parseInt(scanner.nextLine());
+        System.out.println("Insira o ano de fecho do leilão");
+        int ano = Integer.parseInt(scanner.nextLine());
+        System.out.println("Insira o valor inicial do leilão");
+        double valorInicial = Double.parseDouble(scanner.nextLine());
+        output.println(new PedidoCriarLeilao(username, objeto, new Date(ano, mes, dia), valorInicial));
     }
 
     public void fazerLicitacao() {

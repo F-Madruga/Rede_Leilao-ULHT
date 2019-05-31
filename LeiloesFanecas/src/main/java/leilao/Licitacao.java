@@ -6,7 +6,7 @@ public class Licitacao extends Pedido{
     private int idLeilao;
 
     public Licitacao(String username, double quantia, int idLeilao) {
-        super(username, 2);
+        super(username, Pedido.LICITACAO);
         this.quantia = quantia;
         this.idLeilao = idLeilao;
     }

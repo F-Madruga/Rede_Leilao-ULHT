@@ -1,6 +1,13 @@
 package leilao;
 
 public class Pedido {
+    public static final int QUIT = 0;
+    public static final int AUTENTICACAO = 1;
+    public static final int LICITACAO = 2;
+    public static final int CRIAR_LEILAO = 3;
+    public static final int LISTAR_LEILAO = 4;
+    public static final int PLAFOND = 5;
+
 
     private String username;
     private int tipo;
