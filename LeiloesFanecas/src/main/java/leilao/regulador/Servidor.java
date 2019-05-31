@@ -133,7 +133,7 @@ public class Servidor {
     }
 
     public void responderPlafond(Pedido pedido) throws IOException {
-        enviarNotificacoes(Double.toString(licitadores.get(pedido.getUsername()).getPlafond()), licitadores.get(pedido.getUsername()).getSocket());
+        enviarNotificacoes("O seu plafond atual é de " + Double.toString(licitadores.get(pedido.getUsername()).getPlafond()) + " euros.", licitadores.get(pedido.getUsername()).getSocket());
     }
 
     public void responderAutenticacao(Autenticacao pedido, Socket socket) throws IOException, NoSuchAlgorithmException {

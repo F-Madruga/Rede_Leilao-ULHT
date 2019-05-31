@@ -3,24 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="253996c3-0b39-455f-a077-2ff017c6a456" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leilao/Autenticacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leilao/Autenticacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leilao/Licitacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leilao/Licitacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leilao/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leilao/Pedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leilao/PedidoCriarLeilao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leilao/PedidoCriarLeilao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leilao/licitador/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leilao/licitador/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leilao/licitador/Licitador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leilao/licitador/Licitador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leilao/regulador/Leilao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leilao/regulador/Leilao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/Autenticacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/Autenticacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/Licitacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/Licitacao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/Pedido.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/Pedido.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/PedidoCriarLeilao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/PedidoCriarLeilao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/licitador/Cliente$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/licitador/Cliente$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/licitador/Cliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/licitador/Cliente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/licitador/Licitador.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/licitador/Licitador.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Leilao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Leilao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -35,7 +19,7 @@
     <session id="-421600299">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="2" />
@@ -52,13 +36,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="19" />
+          <entry key="JAVA" value="21" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7736" />
+          <entry key="JAVA" value="7872" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="1" />
         </counts>
@@ -70,8 +54,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="226" column="79" selection-start-line="226" selection-start-column="79" selection-end-line="226" selection-end-column="79" />
+            <state relative-caret-position="124">
+              <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
               <folding>
                 <element signature="e#820#918#0" expanded="true" />
                 <element signature="e#917#918#0" expanded="true" />
@@ -79,12 +63,18 @@
                 <element signature="e#1197#1198#0" expanded="true" />
                 <element signature="method#registarLicitadores#0;class#Servidor#0" />
                 <element signature="method#verificarSeDouble#0;class#Servidor#0" />
-                <element signature="method#responderPlafond#0;class#Servidor#0" />
-                <element signature="method#responderAutenticacao#0;class#Servidor#0" />
                 <element signature="e#9160#9348#0" expanded="true" />
                 <element signature="e#9347#9348#0" expanded="true" />
-                <element signature="method#fecharLeiloes#0;class#Servidor#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/leilao/Pedido.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -121,8 +111,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/leilao/licitador/Licitador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+            <state relative-caret-position="357">
+              <caret line="38" column="33" lean-forward="true" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+              <folding>
+                <element signature="e#967#968#0" expanded="true" />
+                <element signature="e#996#997#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -130,9 +124,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/leilao/licitador/Cliente.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1853">
-              <caret line="124" column="69" selection-start-line="124" selection-start-column="69" selection-end-line="124" selection-end-column="69" />
+            <state relative-caret-position="187">
+              <caret line="22" column="38" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="38" />
               <folding>
+                <element signature="method#fazerPedidos#0;class#Cliente#0" />
                 <element signature="method#fazerLicitacao#0;class#Cliente#0" />
                 <element signature="method#verificarResposta#0;class#Cliente#0" />
                 <element signature="method#verificarSeDouble#0;class#Cliente#0" />
@@ -188,8 +183,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-12" />
-    <option name="y" value="-12" />
+    <option name="x" value="1358" />
     <option name="width" value="1390" />
     <option name="height" value="1836" />
   </component>
@@ -263,7 +257,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559332276689" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559334095254" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -342,18 +336,17 @@
       <workItem from="1559286253013" duration="102000" />
       <workItem from="1559294510463" duration="1663000" />
       <workItem from="1559313838163" duration="4045000" />
-      <workItem from="1559327544607" duration="4356000" />
+      <workItem from="1559327544607" duration="6200000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42482000" />
+    <option name="totallyTimeSpent" value="44326000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1381" height="925" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.38618523" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.3839758" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -362,7 +355,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.31003812" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31234258" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -370,7 +363,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3274559" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32655653" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -469,44 +462,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/Autenticacao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/Pedido.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/licitador/Cliente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="124" column="69" selection-start-line="124" selection-start-column="69" selection-end-line="124" selection-end-column="69" />
-          <folding>
-            <element signature="method#fazerLicitacao#0;class#Cliente#0" />
-            <element signature="method#verificarResposta#0;class#Cliente#0" />
-            <element signature="method#verificarSeDouble#0;class#Cliente#0" />
-            <element signature="method#verificarSeInt#0;class#Cliente#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/leilao/PedidoCriarLeilao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/licitador/Licitador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -528,10 +487,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/Pedido.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="46" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/licitador/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="22" column="38" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="38" />
+          <folding>
+            <element signature="method#fazerPedidos#0;class#Cliente#0" />
+            <element signature="method#fazerLicitacao#0;class#Cliente#0" />
+            <element signature="method#verificarResposta#0;class#Cliente#0" />
+            <element signature="method#verificarSeDouble#0;class#Cliente#0" />
+            <element signature="method#verificarSeInt#0;class#Cliente#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/Autenticacao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/licitador/Licitador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="38" column="33" lean-forward="true" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+          <folding>
+            <element signature="e#967#968#0" expanded="true" />
+            <element signature="e#996#997#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="226" column="79" selection-start-line="226" selection-start-column="79" selection-end-line="226" selection-end-column="79" />
+        <state relative-caret-position="124">
+          <caret line="137" lean-forward="true" selection-start-line="137" selection-end-line="137" />
           <folding>
             <element signature="e#820#918#0" expanded="true" />
             <element signature="e#917#918#0" expanded="true" />
@@ -539,11 +537,8 @@
             <element signature="e#1197#1198#0" expanded="true" />
             <element signature="method#registarLicitadores#0;class#Servidor#0" />
             <element signature="method#verificarSeDouble#0;class#Servidor#0" />
-            <element signature="method#responderPlafond#0;class#Servidor#0" />
-            <element signature="method#responderAutenticacao#0;class#Servidor#0" />
             <element signature="e#9160#9348#0" expanded="true" />
             <element signature="e#9347#9348#0" expanded="true" />
-            <element signature="method#fecharLeiloes#0;class#Servidor#0" />
           </folding>
         </state>
       </provider>
