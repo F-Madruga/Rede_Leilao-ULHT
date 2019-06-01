@@ -56,10 +56,9 @@ public class Leilao {
     }
 
     public boolean hasFinished() {
-        return date.after(new Date());
+        return date.before(new Date());
     }
 
-    //<ID> <Descrição> <Data de fecho> <Valor da Proposta> <Username>
     @Override
     public String toString() {
         return this.id + " " + this.objeto + " " + this.date.getDay() + "/" + this.date.getMonth() + "/" + this.date.getYear() + " " + this.maiorLicitacao.getQuantia() + " " + maiorLicitacao.getUsername();

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Date;
 import java.util.Scanner;
@@ -23,8 +24,6 @@ public class Cliente {
     public Cliente(String ip, int port) throws IOException {
         inputSocket = new DatagramSocket(port);
         outputSocket = new Socket(ip, port);
-        System.out.println(outputSocket.getInetAddress());
-        System.out.println(outputSocket.getPort());
         output = new PrintWriter(outputSocket.getOutputStream(), true);
     }
 
