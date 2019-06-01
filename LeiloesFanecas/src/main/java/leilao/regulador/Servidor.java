@@ -204,6 +204,8 @@ public class Servidor {
     public synchronized void enviarNotificacoes(String mensagem, Socket socket) throws IOException {
         InetAddress address = socket.getInetAddress();
         int port = socket.getLocalPort();
+        System.out.println(address);
+        System.out.println(port);
         DatagramPacket pacote = new DatagramPacket(mensagem.getBytes(), mensagem.getBytes().length, address, port);
         DatagramSocket output = new DatagramSocket();
         output.send(pacote);

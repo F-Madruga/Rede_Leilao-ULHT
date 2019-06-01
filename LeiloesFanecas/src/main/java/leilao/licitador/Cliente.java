@@ -23,6 +23,8 @@ public class Cliente {
     public Cliente(String ip, int port) throws IOException {
         inputSocket = new DatagramSocket(port);
         outputSocket = new Socket(ip, port);
+        System.out.println(outputSocket.getInetAddress());
+        System.out.println(outputSocket.getPort());
         output = new PrintWriter(outputSocket.getOutputStream(), true);
     }
 
