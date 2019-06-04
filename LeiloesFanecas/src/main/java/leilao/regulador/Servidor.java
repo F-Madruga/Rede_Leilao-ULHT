@@ -159,26 +159,7 @@ public class Servidor {
         }
     }
 
-    public void responderLicitacao(Licitacao pedido) throws IOException {
-        /*TODO
-            - utiliza o metodo licitar do leilao que devolve um boolean se a licitação for aceite
-            - tens a função equals para compara os leilões
-            - o pedido tem metodo get para receber o usename do licitador, podes usa-lo para ir ao hasmap licitadores buscar o licitador
-            - tens de chamar a função atualizar licitadores e a função atualizar leiloes*/
-        for (Leilao leilao : leiloes) {
-            if (leilao.getId() == pedido.getIdLeilao()) {
-                if (leilao.licitar(licitadores.get(pedido.getUsername()), pedido)) {
-                    enviarNotificacoes("A sua licitação foi aceite.", licitadores.get(pedido.getUsername()).getSocket());
-                    for (Licitador licitador : new ArrayList<Licitador>(this.licitadores.values())) {
-                        if (!licitador.getUsername().equals(pedido.getUsername()) && licitador.estaConectado()) {
-                            enviarNotificacoes("Foi recebida uma nova licitação no leilão com ID " + pedido.getIdLeilao() + " .", licitador.getSocket());
-                        }
-                    }
-                }
-                else
-                    enviarNotificacoes("A sua licitação não foi aceite, o valor proposto não é superior ao máximo atual.", licitadores.get(pedido.getUsername()).getSocket());
-            }
-        }
+    public synchronized void responderLicitacao(Licitacao pedido) throws IOException {
         atualizarFicheiroLeiloes();
         atualizarFicheiroLicitadores();
     }
@@ -202,14 +183,14 @@ public class Servidor {
             - tens de por a class que vais serializar e deserializar com o implements Serializeble*/
     }
 
-    public void atualizarFicheiroLeiloes() {
+    public synchronized void atualizarFicheiroLeiloes() {
         /*TODO
             - este metod pega na lista de leiloes e escreve-a para ficheiro (serielize(list(leiloes)))
             - tens de implementar o serializador
             - tens de por a class que vais serializar e deserializar com o implements Serializeble*/
     }
 
-    public void atualizarFicheiroLicitadores() {
+    public synchronized void atualizarFicheiroLicitadores() {
         /*TODO
             - este metod pega na lista de leiloes e escreve-a para ficheiro (serielize(map(licitadores)))
             - tens de implementar o serializador
@@ -257,9 +238,11 @@ public class Servidor {
                 enviarNotificacoes("O bem presente no leilão com o ID " + leilao.getId() +" foi vendido à pessoa "+ leilao.getMaiorLicitacao().getUsername() + " com o valor " + leilao.getMaiorLicitacao().getQuantia() +" de euros.", leilao.getAutor().getSocket());
             }
         }
-        for (Licitador licitador : leilao.getLicitadores()) {
-            if (!licitador.getUsername().equals(leilao.getMaiorLicitacao().getUsername()) && !licitador.equals(leilao.getAutor()) && licitadores.get(licitador.getUsername()).estaConectado()) {
-                enviarNotificacoes("O leilão com o ID X no qual realizou licitações já fechou, infelizmente você não foi o vencedor.", licitadores.get(licitador.getUsername()).getSocket());
+        Set<String> licitadores = new HashSet<String>();
+        for (Licitacao licitacao : leilao.getLicitacoes()) {
+            if (!licitadores.contains(licitacao.getUsername()) && !licitacao.getUsername().equals(leilao.getMaiorLicitacao().getUsername()) && !licitacao.getUsername().equals(leilao.getAutor().getUsername()) && this.licitadores.get(licitacao.getUsername()).estaConectado()) {
+                enviarNotificacoes("O leilão com o ID " + leilao.getId() + " no qual realizou licitações já fechou, infelizmente você não foi o vencedor.", this.licitadores.get(licitacao.getUsername()).getSocket());
+                licitadores.add(licitacao.getUsername());
             }
         }
     }

@@ -9,7 +9,6 @@ public class Leilao {
     private static int NUM = 0;
     private int id;
     private Licitador autor;
-    private Set<Licitador> licitadores;
     private String objeto;
     private Date date;
     private List<Licitacao> licitacoes;
@@ -20,7 +19,6 @@ public class Leilao {
         this.autor = autor;
         this.objeto = objeto;
         this.date = date;
-        this.licitadores = new HashSet<Licitador>();
         this.licitacoes = new ArrayList<Licitacao>();
         this.licitacoes.add(new Licitacao(autor.getUsername(), valorInicial, this.id));
     }
@@ -29,21 +27,16 @@ public class Leilao {
         return autor;
     }
 
-    public Set<Licitador> getLicitadores() {
-        return licitadores;
+    public List<Licitacao> getLicitacoes() {
+        return licitacoes;
     }
 
     public Licitacao getMaiorLicitacao() {
         return licitacoes.get(licitacoes.size() - 1);
     }
 
-    public synchronized boolean licitar(Licitador licitador, Licitacao licitacao) {
-        if (licitacao.getQuantia() > getMaiorLicitacao().getQuantia()) {
-            licitadores.add(licitador);
-            licitacoes.add(licitacao);
-            return true;
-        }
-        return false;
+    public void licitar(Licitacao licitacao) {
+        licitacoes.add(licitacao);
     }
 
     @Override
