@@ -1,6 +1,8 @@
 package leilao;
 
-public class Pedido {
+import java.io.Serializable;
+
+public class Pedido implements Serializable {
     public static final int QUIT = 0;
     public static final int AUTENTICACAO = 1;
     public static final int LICITACAO = 2;

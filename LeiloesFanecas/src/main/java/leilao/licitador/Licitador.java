@@ -1,8 +1,9 @@
 package leilao.licitador;
 
+import java.io.Serializable;
 import java.net.Socket;
 
-public class Licitador {
+public class Licitador implements Serializable {
 
     private String username;
     private String password;
@@ -56,7 +57,7 @@ public class Licitador {
         return outroLicitador.getUsername().equals(this.username);
     }
 
-    public boolean retirarDinheiro(double dinheiro) {
+    public synchronized boolean retirarDinheiro(double dinheiro) {
         if (this.plafond - dinheiro >= 0) {
             this.plafond -= dinheiro;
             return true;
@@ -64,7 +65,7 @@ public class Licitador {
         return false;
     }
 
-    public void adicionarDinheiro(double dinheiro) {
+    public synchronized void adicionarDinheiro(double dinheiro) {
         this.plafond += dinheiro;
     }
 }

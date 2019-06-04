@@ -3,10 +3,11 @@ package leilao.regulador;
 import leilao.Licitacao;
 import leilao.licitador.Licitador;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Leilao {
-    private static int NUM = 0;
+public class Leilao implements Serializable {
+    public static int NUM = 0;
     private int id;
     private Licitador autor;
     private String objeto;

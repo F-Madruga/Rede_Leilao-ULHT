@@ -3,6 +3,7 @@ package leilao.regulador;
 import leilao.*;
 import leilao.licitador.Licitador;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
@@ -26,11 +27,19 @@ public class Servidor {
         System.out.println("Servidor inicializado");
         Thread threadLerLeiloes = new Thread(new Runnable() {
             public void run() {
-                //TODO usar função ler leilao
+                try {
+                    lerFicheiroLeiloes();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         threadLerLeiloes.start();
-        //TODO usar função ler licitadores (não por numa thread
+        try {
+            lerFicheiroLicitadores();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 /*        Thread threadVerificarLeiloes = new Thread(new Runnable() {
             public void run() {
                 verificarLeiloes();
@@ -41,7 +50,7 @@ public class Servidor {
             public void run() {
                 try {
                     registarLicitadores();
-                } catch (NoSuchAlgorithmException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -62,7 +71,7 @@ public class Servidor {
         }
     }
 
-    public void registarLicitadores() throws NoSuchAlgorithmException {
+    public void registarLicitadores() throws NoSuchAlgorithmException, IOException {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             String username;
@@ -82,7 +91,7 @@ public class Servidor {
             } while (!verificarSeDouble(plafond));
             Licitador licitador = new Licitador(username, password, Double.parseDouble(plafond));
             licitadores.put(licitador.getUsername(), licitador);
-            //todo Atualizar ficheiro de utilizadores
+            atualizarFicheiroLicitadores();//TODO garantir que continua a funcionar aqui
             System.out.println("Utilizador registado");
         }
     }
@@ -138,6 +147,7 @@ public class Servidor {
     public void responderAutenticacao(Autenticacao pedido, Socket socket) throws IOException, NoSuchAlgorithmException {
         if  (licitadores.containsKey(pedido.getUsername()) && licitadores.get(pedido.getUsername()).conectar(pedido.getPassword(), socket)) {
             enviarNotificacoes("Utilizador verificado", licitadores.get(pedido.getUsername()).getSocket());
+            //TODO atualizar licitadores
         }
         else {
             enviarNotificacoes("As credenciais estão incorretas", socket);
@@ -147,7 +157,7 @@ public class Servidor {
     public synchronized void responderCriarLeilao(PedidoCriarLeilao pedido) throws IOException {
         Leilao leilao = new Leilao(this.licitadores.get(pedido.getUsername()), pedido.getObjeto(), pedido.getValorInicial(), pedido.getDate());
         leiloes.put(leilao.getId(), leilao);
-        //TODO chamar função atualizarLeiloes
+        //TODO atualizar ficheiro de leilao
         for (Licitador licitador : new ArrayList<Licitador>(this.licitadores.values())) {
             if (!licitador.getUsername().equals(pedido.getUsername()) && licitador.estaConectado()) {
                 enviarNotificacoes("Há um novo leilão disponível, queira consultar os leilões disponíveis." , licitador.getSocket());
@@ -165,6 +175,7 @@ public class Servidor {
                     if (licitadores.get(pedido.getUsername()).retirarDinheiro(pedido.getQuantia())) {
                         licitadores.get(leiloes.get(pedido.getIdLeilao()).getMaiorLicitacao().getUsername()).adicionarDinheiro(leiloes.get(pedido.getIdLeilao()).getMaiorLicitacao().getQuantia());
                         leiloes.get(pedido.getIdLeilao()).fazerLicitacao(pedido);
+                        //TODO atualizar os dois ficheiros
                         enviarNotificacoes("A sua licitação foi aceite.", licitadores.get(pedido.getUsername()).getSocket());
                         HashSet<String> licitadoresDoLeilao = new HashSet<String>();
                         for (Licitacao licitacao : leiloes.get(pedido.getIdLeilao()).getLicitacoes()) {
@@ -185,6 +196,7 @@ public class Servidor {
                 if (pedido.getQuantia() >= leiloes.get(pedido.getIdLeilao()).getValorInicial()) {
                     if (licitadores.get(pedido.getUsername()).retirarDinheiro(pedido.getQuantia())) {
                         leiloes.get(pedido.getIdLeilao()).fazerLicitacao(pedido);
+                        //TODO atualizar os dois ficheiros
                         enviarNotificacoes("A sua licitação foi aceite.", licitadores.get(pedido.getUsername()).getSocket());
                         HashSet<String> licitadoresDoLeilao = new HashSet<String>();
                         for (Licitacao licitacao : leiloes.get(pedido.getIdLeilao()).getLicitacoes()) {
@@ -205,8 +217,6 @@ public class Servidor {
         else  {
             enviarNotificacoes("O leilão com o ID " + pedido.getIdLeilao() + " não existe ou já não está disponível.", licitadores.get(pedido.getUsername()).getSocket());
         }
-        atualizarFicheiroLeiloes();
-        atualizarFicheiroLicitadores();
     }
 
     public void responderListaLeiloes(Pedido pedido) throws IOException {
@@ -217,30 +227,34 @@ public class Servidor {
         enviarNotificacoes(mensagem, licitadores.get(pedido.getUsername()).getSocket());
     }
 
-    public void lerFicheiroLeiloes() {
-        /*TODO
-            - tens de implementar o serializador
-            - tens de por a class que vais serializar e deserializar com o implements Serializeble*/
+    public void lerFicheiroLeiloes() throws IOException, ClassNotFoundException {
+        File file = new File("leiloes.data");
+        if (file.exists()) {
+            this.leiloes = (HashMap<Integer, Leilao>)(Serializador.deserialize("leiloes.data"));
+            for (Leilao leilao : new ArrayList<Leilao>(this.leiloes.values())) {
+                if (leilao.getId() > Leilao.NUM) {
+                    Leilao.NUM = leilao.getId();
+                }
+            }
+        }
     }
 
-    public void lerFicheiroLicitadores() {
-        /*TODO
-            - tens de implementar o serializador
-            - tens de por a class que vais serializar e deserializar com o implements Serializeble*/
+    public void lerFicheiroLicitadores() throws IOException, ClassNotFoundException {
+        File file = new File("licitadores.data");
+        if (file.exists()) {
+            this.licitadores = (HashMap<String, Licitador>)(Serializador.deserialize("licitadores.data"));
+            for (Licitador licitador : new ArrayList<Licitador>(licitadores.values())) {
+                licitador.desconectar();
+            }
+        }
     }
 
-    public synchronized void atualizarFicheiroLeiloes() {
-        /*TODO
-            - este metod pega na lista de leiloes e escreve-a para ficheiro (serielize(list(leiloes)))
-            - tens de implementar o serializador
-            - tens de por a class que vais serializar e deserializar com o implements Serializeble*/
+    public synchronized void atualizarFicheiroLeiloes() throws IOException {
+        Serializador.serialize(leiloes, "leiloes.data");
     }
 
-    public synchronized void atualizarFicheiroLicitadores() {
-        /*TODO
-            - este metod pega na lista de leiloes e escreve-a para ficheiro (serielize(map(licitadores)))
-            - tens de implementar o serializador
-            - tens de por a class que vais serializar e deserializar com o implements Serializeble*/
+    public synchronized void atualizarFicheiroLicitadores() throws IOException {
+        Serializador.serialize(licitadores, "licitadores.data");
     }
 
     public synchronized void enviarNotificacoes(String mensagem, Socket socket) throws IOException {
@@ -253,43 +267,40 @@ public class Servidor {
 
 /*    public void verificarLeiloes() {
         while (true) {
-            for (final Leilao leilao : new ArrayList<Leilao>(this.leiloes.values())) {
-                if (leilao.hasFinished()) {
+            for (final Integer leilaoId : new ArrayList<Integer>(this.leiloes.keySet())) {
+                if (leiloes.get(leilaoId).hasFinished()) {
                     Thread thread = new Thread(new Runnable() {
                         public void run() {
                             try {
-                                fecharLeiloes(leilao);
+                                fecharLeiloes(leiloes.get(leilaoId));
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
                     });
                     thread.start();
-                    this.leiloes.remove(leilao);
-                    //TODO chamar função atualizar leilao e atualizar licitador
+                    this.leiloes.remove(leilaoId);
+                    //TODO atualizar os dois ficheiros
                 }
             }
         }
     }
 
     public void fecharLeiloes(Leilao leilao) throws IOException {
-        if (leilao.getMaiorLicitacao().getUsername().equals(leilao.getAutor().getUsername()) && licitadores.get(leilao.getAutor().getUsername()).estaConectado()) {
-            enviarNotificacoes("Lamentamos, mas o seu leilão com o ID " + leilao.getId() + " fechou sem qualquer licitacão.", this.licitadores.get(leilao.getAutor().getUsername()).getSocket());
+        if (leilao.temLicitacoes()) {
+            licitadores.get(leilao.getAutor().getUsername()).adicionarDinheiro(leilao.getMaiorLicitacao().getQuantia());
+            enviarNotificacoes("O bem presente no leilão com o ID " + leilao.getId() + " foi vendido à pessoa " + leilao.getMaiorLicitacao().getUsername() + " com o valor " + leilao.getMaiorLicitacao().getQuantia() + " de euros.", licitadores.get(leilao.getAutor().getUsername()).getSocket());
+            enviarNotificacoes("Parabéns! Foi o vencedor do leilão com o ID " + leilao.getId() + " no valor de " + leilao.getMaiorLicitacao().getQuantia() + " euros.", licitadores.get(leilao.getMaiorLicitacao().getUsername()).getSocket());
+            Set<String> licitadoresDoLeilao = new HashSet<String>();
+            for (Licitacao licitacao : leilao.getLicitacoes()) {
+                if (!licitacao.equals(leilao.getAutor().getUsername()) && !licitacao.getUsername().equals(leilao.getMaiorLicitacao().getUsername()) && !licitadoresDoLeilao.contains(licitacao.getUsername())) {
+                    licitadoresDoLeilao.add(licitacao.getUsername());
+                    enviarNotificacoes("O leilão com o ID " + leilao.getId() + " no qual realizou licitações já fechou, infelizmente você não foi o vencedor.", licitadores.get(licitacao.getUsername()).getSocket());
+                }
+            }
         }
         else {
-            if (licitadores.get(leilao.getMaiorLicitacao().getUsername()).estaConectado()) {
-                enviarNotificacoes("Parabéns! Foi o vencedor do leilão com o ID " + leilao.getId() + " no valor de " + leilao.getMaiorLicitacao().getQuantia() + " euros.", this.licitadores.get(leilao.getMaiorLicitacao().getUsername()).getSocket());
-            }
-            if (licitadores.get(leilao.getAutor().getUsername()).estaConectado()) {
-                enviarNotificacoes("O bem presente no leilão com o ID " + leilao.getId() +" foi vendido à pessoa "+ leilao.getMaiorLicitacao().getUsername() + " com o valor " + leilao.getMaiorLicitacao().getQuantia() +" de euros.", leilao.getAutor().getSocket());
-            }
-        }
-        Set<String> licitadores = new HashSet<String>();
-        for (Licitacao licitacao : leilao.getLicitacoes()) {
-            if (!licitadores.contains(licitacao.getUsername()) && !licitacao.getUsername().equals(leilao.getMaiorLicitacao().getUsername()) && !licitacao.getUsername().equals(leilao.getAutor().getUsername()) && this.licitadores.get(licitacao.getUsername()).estaConectado()) {
-                enviarNotificacoes("O leilão com o ID " + leilao.getId() + " no qual realizou licitações já fechou, infelizmente você não foi o vencedor.", this.licitadores.get(licitacao.getUsername()).getSocket());
-                licitadores.add(licitacao.getUsername());
-            }
+            enviarNotificacoes("Lamentamos, mas o seu leilão com o ID " + leilao.getId() + " fechou sem qualquer licitação.", licitadores.get(leilao.getAutor().getUsername()).getSocket());
         }
     }*/
 }

@@ -1,6 +1,6 @@
 package leilao;
 
-public class Licitacao extends Pedido{
+public class Licitacao extends Pedido {
 
     private double quantia;
     private int idLeilao;
