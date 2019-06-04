@@ -160,12 +160,27 @@ public class Servidor {
     }
 
     public void responderLicitacao(Licitacao pedido) throws IOException {
-        enviarNotificacoes("Licitar ainda não está disponivel", licitadores.get(pedido.getUsername()).getSocket());
         /*TODO
             - utiliza o metodo licitar do leilao que devolve um boolean se a licitação for aceite
             - tens a função equals para compara os leilões
             - o pedido tem metodo get para receber o usename do licitador, podes usa-lo para ir ao hasmap licitadores buscar o licitador
             - tens de chamar a função atualizar licitadores e a função atualizar leiloes*/
+        for (Leilao leilao : leiloes) {
+            if (leilao.getId() == pedido.getIdLeilao()) {
+                if (leilao.licitar(licitadores.get(pedido.getUsername()), pedido)) {
+                    enviarNotificacoes("A sua licitação foi aceite.", licitadores.get(pedido.getUsername()).getSocket());
+                    for (Licitador licitador : new ArrayList<Licitador>(this.licitadores.values())) {
+                        if (!licitador.getUsername().equals(pedido.getUsername()) && licitador.estaConectado()) {
+                            enviarNotificacoes("Foi recebida uma nova licitação no leilão com ID " + pedido.getIdLeilao() + " .", licitador.getSocket());
+                        }
+                    }
+                }
+                else
+                    enviarNotificacoes("A sua licitação não foi aceite, o valor proposto não é superior ao máximo atual.", licitadores.get(pedido.getUsername()).getSocket());
+            }
+        }
+        atualizarFicheiroLeiloes();
+        atualizarFicheiroLicitadores();
     }
 
     public void responderListaLeiloes(Pedido pedido) throws IOException {

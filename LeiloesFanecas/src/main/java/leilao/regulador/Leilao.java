@@ -2,18 +2,17 @@ package leilao.regulador;
 
 import leilao.Licitacao;
 import leilao.licitador.Licitador;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+
+import java.util.*;
 
 public class Leilao {
     private static int NUM = 0;
     private int id;
-    private Licitacao maiorLicitacao;
     private Licitador autor;
     private Set<Licitador> licitadores;
     private String objeto;
     private Date date;
+    private List<Licitacao> licitacoes;
 
     public Leilao(Licitador autor, String objeto, double valorInicial, Date date) {
         NUM ++;
@@ -21,8 +20,9 @@ public class Leilao {
         this.autor = autor;
         this.objeto = objeto;
         this.date = date;
-        this.maiorLicitacao = new Licitacao(autor.getUsername(), valorInicial, this.id);
         this.licitadores = new HashSet<Licitador>();
+        this.licitacoes = new ArrayList<Licitacao>();
+        this.licitacoes.add(new Licitacao(autor.getUsername(), valorInicial, this.id));
     }
 
     public Licitador getAutor() {
@@ -34,13 +34,13 @@ public class Leilao {
     }
 
     public Licitacao getMaiorLicitacao() {
-        return maiorLicitacao;
+        return licitacoes.get(licitacoes.size() - 1);
     }
 
     public synchronized boolean licitar(Licitador licitador, Licitacao licitacao) {
-        if (licitacao.getQuantia() > maiorLicitacao.getQuantia()) {
+        if (licitacao.getQuantia() > getMaiorLicitacao().getQuantia()) {
             licitadores.add(licitador);
-            maiorLicitacao = licitacao;
+            licitacoes.add(licitacao);
             return true;
         }
         return false;
@@ -61,6 +61,6 @@ public class Leilao {
 
     @Override
     public String toString() {
-        return this.id + " " + this.objeto + " " + this.date.getDay() + "/" + this.date.getMonth() + "/" + this.date.getYear() + " " + this.maiorLicitacao.getQuantia() + " " + maiorLicitacao.getUsername();
+        return this.id + " " + this.objeto + " " + this.date.getDay() + "/" + this.date.getMonth() + "/" + this.date.getYear() + " " + getMaiorLicitacao().getQuantia() + " " + getMaiorLicitacao().getUsername();
     }
 }
