@@ -55,5 +55,17 @@ public class Licitador {
         Licitador outroLicitador = (Licitador) obj;
         return outroLicitador.getUsername().equals(this.username);
     }
+
+    public boolean retirarDinheiro(double dinheiro) {
+        if (this.plafond - dinheiro >= 0) {
+            this.plafond -= dinheiro;
+            return true;
+        }
+        return false;
+    }
+
+    public void adicionarDinheiro(double dinheiro) {
+        this.plafond += dinheiro;
+    }
 }
 

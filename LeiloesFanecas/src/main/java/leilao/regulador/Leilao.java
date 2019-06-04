@@ -11,6 +11,7 @@ public class Leilao {
     private Licitador autor;
     private String objeto;
     private Date date;
+    private double valorInicial;
     private List<Licitacao> licitacoes;
 
     public Leilao(Licitador autor, String objeto, double valorInicial, Date date) {
@@ -20,7 +21,7 @@ public class Leilao {
         this.objeto = objeto;
         this.date = date;
         this.licitacoes = new ArrayList<Licitacao>();
-        this.licitacoes.add(new Licitacao(autor.getUsername(), valorInicial, this.id));
+        this.valorInicial = valorInicial;
     }
 
     public Licitador getAutor() {
@@ -32,10 +33,21 @@ public class Leilao {
     }
 
     public Licitacao getMaiorLicitacao() {
-        return licitacoes.get(licitacoes.size() - 1);
+        if (!licitacoes.isEmpty()) {
+            return licitacoes.get(licitacoes.size() - 1);
+        }
+        return null;
     }
 
-    public void licitar(Licitacao licitacao) {
+    public boolean temLicitacoes() {
+        return !licitacoes.isEmpty();
+    }
+
+    public double getValorInicial() {
+        return valorInicial;
+    }
+
+    public void fazerLicitacao(Licitacao licitacao) {
         licitacoes.add(licitacao);
     }
 
@@ -54,6 +66,11 @@ public class Leilao {
 
     @Override
     public String toString() {
-        return this.id + " " + this.objeto + " " + this.date.getDay() + "/" + this.date.getMonth() + "/" + this.date.getYear() + " " + getMaiorLicitacao().getQuantia() + " " + getMaiorLicitacao().getUsername();
+        if (!licitacoes.isEmpty()) {
+            return this.id + " " + this.objeto + " " + this.date.getDay() + "/" + this.date.getMonth() + "/" + this.date.getYear() + " " + getMaiorLicitacao().getQuantia() + " " + getMaiorLicitacao().getUsername();
+        }
+        else {
+            return this.id + " " + this.objeto + " " + this.date.getDay() + "/" + this.date.getMonth() + "/" + this.date.getYear() + " " + valorInicial + " " + autor.getUsername();
+        }
     }
 }
