@@ -334,12 +334,27 @@ public class Servidor {
     }
 
     public void fecharLeiloes(Leilao leilao) throws IOException {
-        /*TODO
-        - Caso não houver licitações enviar mensagem ao autor do leilão
-        - Caso haja licitações fazer o seguinte:
-            - Enviar mensagem ao vencedor
-            - Enviar mensagem ao autor
-            - Dar o dinheiro da maior licitação ao autor
-            - Enviar mensagem a todos os participantes (excepto o autor e o vencedor) a dizer que o leilão acabou*/
+        if (leilao.temLicitacoes()) {
+            leilao.getAutor().adicionarDinheiro(leilao.getMaiorLicitacao().getQuantia());
+            Set<Licitador> licitadorSet = new HashSet<Licitador>();
+            for (Licitador licitador : licitadores) {
+                if (leilao.getMaiorLicitacao().getUsername().equals(licitador.getUsername())) {
+                    enviarNotificacoes("Parabéns! Foi o vencedor do leilão com o ID " + leilao.getId() + " no valor de " + leilao.getMaiorLicitacao().getQuantia() + "euros.", licitador.getAddress());
+                }
+                if (licitador.equals(leilao.getAutor())) {
+                    enviarNotificacoes("O bem presente no leilão com o ID " + leilao.getId() + " foi vendido à pessoa " + leilao.getMaiorLicitacao().getUsername() + "com o valor " + leilao.getMaiorLicitacao().getQuantia() + "euros.", licitador.getAddress());
+                }
+                for (Licitacao licitacao : leilao.getLicitacoes()) {
+                    if (!licitador.getUsername().equals(leilao.getAutor()) && !licitador.getUsername().equals(leilao.getMaiorLicitacao().getUsername())) {
+                        if (!licitadorSet.contains(licitador) && licitacao.getUsername().equals(licitador.getUsername())) {
+                            enviarNotificacoes("O leilão com o ID " + leilao.getId() + " no qual realizou licitações já fechou, infelizmente você não foi o vencedor.", licitador.getAddress());
+                            licitadorSet.add(licitador);
+                        }
+                    }
+                }
+            }
+        } else {
+            enviarNotificacoes("Lamentamos, mas o seu leilão com o ID " + leilao.getId() + "fechou sem qualquer licitacão.", leilao.getAutor().getAddress());
+        }
     }
 }
