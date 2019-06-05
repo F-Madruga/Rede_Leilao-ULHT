@@ -1,7 +1,6 @@
 package leilao.licitador;
 
 import java.io.Serializable;
-import java.net.Socket;
 
 public class Licitador implements Serializable {
 
@@ -9,7 +8,7 @@ public class Licitador implements Serializable {
     private String password;
     private double plafond;
     private boolean conectado;
-    private Socket socket;
+    private String address;
 
     public Licitador(String username, String password, double plafond) {
         this.username = username;
@@ -34,17 +33,17 @@ public class Licitador implements Serializable {
         return conectado;
     }
 
-    public boolean conectar(String password, Socket socket) {
+    public boolean conectar(String password, String address) {
         if (this.password.equals(password)) {
             conectado = true;
-            this.socket = socket;
+            this.address = address;
             return true;
         }
         return false;
     }
 
-    public Socket getSocket() {
-        return socket;
+    public String getAddress() {
+        return address;
     }
 
     public void desconectar() {
