@@ -67,5 +67,10 @@ public class Licitador implements Serializable {
     public synchronized void adicionarDinheiro(double dinheiro) {
         this.plafond += dinheiro;
     }
+
+    @Override
+    public String toString() {
+        return this.getUsername() + " " + this.plafond + " " + this.address + " " + this.password;
+    }
 }
 

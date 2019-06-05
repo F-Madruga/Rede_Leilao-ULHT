@@ -29,6 +29,6 @@ public class Pedido implements Serializable {
 
     @Override
     public String toString() {
-        return username + ":" + tipo;
+        return username + "#" + tipo;
     }
 }

@@ -17,6 +17,6 @@ public class Autenticacao extends Pedido {
 
     @Override
     public String toString() {
-        return super.toString() + ":" + password;
+        return super.toString() + "#" + password;
     }
 }

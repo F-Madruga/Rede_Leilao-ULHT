@@ -11,16 +11,16 @@ public class Leilao implements Serializable {
     private int id;
     private Licitador autor;
     private String objeto;
-    private Date date;
+    private Calendar dataFecho;
     private double valorInicial;
     private List<Licitacao> licitacoes;
 
-    public Leilao(Licitador autor, String objeto, double valorInicial, Date date) {
+    public Leilao(Licitador autor, String objeto, double valorInicial, Calendar dataFecho) {
         NUM ++;
         this.id = NUM;
         this.autor = autor;
         this.objeto = objeto;
-        this.date = date;
+        this.dataFecho = dataFecho;
         this.licitacoes = new ArrayList<Licitacao>();
         this.valorInicial = valorInicial;
     }
@@ -62,16 +62,16 @@ public class Leilao implements Serializable {
     }
 
     public boolean hasFinished() {
-        return date.before(new Date());
+        return dataFecho.before(Calendar.getInstance());
     }
 
     @Override
     public String toString() {
         if (!licitacoes.isEmpty()) {
-            return this.id + " " + this.objeto + " " + this.date.getDay() + "/" + this.date.getMonth() + "/" + this.date.getYear() + " " + getMaiorLicitacao().getQuantia() + " " + getMaiorLicitacao().getUsername();
+            return this.id + " " + this.objeto + " " + dataFecho.getTime() + " " + getMaiorLicitacao().getQuantia() + " " + getMaiorLicitacao().getUsername();
         }
         else {
-            return this.id + " " + this.objeto + " " + this.date.getDay() + "/" + this.date.getMonth() + "/" + this.date.getYear() + " " + valorInicial + " " + autor.getUsername();
+            return this.id + " " + this.objeto + " " + dataFecho.getTime() + " " + valorInicial + " " + autor.getUsername();
         }
     }
 }

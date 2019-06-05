@@ -11,6 +11,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -122,9 +123,15 @@ public class Cliente {
         int mes = Integer.parseInt(scanner.nextLine());
         System.out.println("Insira o ano de fecho do leilão");
         int ano = Integer.parseInt(scanner.nextLine());
+        System.out.println("Insira a hora de fecho do leilão");
+        int hora = Integer.parseInt(scanner.nextLine());
+        System.out.println("Insira o minuto de fecho do leilão");
+        int minuto = Integer.parseInt(scanner.nextLine());
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(ano, mes - 1, dia, hora, minuto);
         System.out.println("Insira o valor inicial do leilão");
         double valorInicial = Double.parseDouble(scanner.nextLine());
-        output.println(new PedidoCriarLeilao(username, objeto, new Date(ano, mes, dia), valorInicial));
+        output.println(new PedidoCriarLeilao(username, objeto, calendar, valorInicial));
     }
 
     public void fazerLicitacao() {

@@ -27,27 +27,18 @@ public class Servidor {
 
     public void start() throws IOException {
         System.out.println("Servidor inicializado");
-        Thread threadLerLeiloes = new Thread(new Runnable() {
-            public void run() {
-                try {
-                    lerFicheiroLeiloes();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        threadLerLeiloes.start();
         try {
+            lerFicheiroLeiloes();
             lerFicheiroLicitadores();
         } catch (Exception e) {
             e.printStackTrace();
         }
-/*        Thread threadVerificarLeiloes = new Thread(new Runnable() {
+        Thread threadVerificarLeiloes = new Thread(new Runnable() {
             public void run() {
                 verificarLeiloes();
             }
         });
-        threadVerificarLeiloes.start();*/
+        threadVerificarLeiloes.start();
         Thread threadRegistarLicitadores = new Thread(new Runnable() {
             public void run() {
                 try {
@@ -122,7 +113,7 @@ public class Servidor {
         String [] pedido;
         do {
             //pedido = (Pedido)input.readObject();
-            pedido = input.readLine().split(":");
+            pedido = input.readLine().split("#");
             switch (Integer.parseInt(pedido[1])) {
                 case Pedido.QUIT:
                     enviarNotificacoes("quit", socket.getInetAddress().getHostAddress());
@@ -135,7 +126,9 @@ public class Servidor {
                     responderLicitacao(new Licitacao(pedido[0], Double.parseDouble(pedido[2]), Integer.parseInt(pedido[3])));
                     break;
                 case Pedido.CRIAR_LEILAO:
-                    responderCriarLeilao(new PedidoCriarLeilao(pedido[0], pedido[2], new Date(Integer.parseInt(pedido[3]), Integer.parseInt(pedido[4]), Integer.parseInt(pedido[5])), Double.parseDouble(pedido[6])));
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.set(Integer.parseInt(pedido[3]), Integer.parseInt(pedido[4]), Integer.parseInt(pedido[5]), Integer.parseInt(pedido[6]), Integer.parseInt(pedido[7]));
+                    responderCriarLeilao(new PedidoCriarLeilao(pedido[0], pedido[2], calendar, Double.parseDouble(pedido[8])));
                     break;
                 case Pedido.LISTAR_LEILAO:
                     responderListaLeiloes(new Pedido(pedido[0], Integer.parseInt(pedido[1])));
@@ -175,13 +168,14 @@ public class Servidor {
     public synchronized void responderCriarLeilao(PedidoCriarLeilao pedido) throws IOException {
         for (Licitador licitador : licitadores) {
             if (licitador.getUsername().equals(pedido.getUsername())) {
-                Leilao leilao = new Leilao(licitador, pedido.getObjeto(), pedido.getValorInicial(), pedido.getDate());
+                Leilao leilao = new Leilao(licitador, pedido.getObjeto(), pedido.getValorInicial(), pedido.getDateFecho());
                 leiloes.add(leilao);
                 enviarNotificacoes("O seu leilão foi criado com sucesso com ID " + leilao.getId() + "." , licitador.getAddress());
                 break;
             }
         }
-        //TODO atualizar ficheiro de leilao
+        //TODO
+        atualizarFicheiroLeiloes();
         for (Licitador licitador : licitadores) {
             if (!licitador.getUsername().equals(pedido.getUsername()) && licitador.estaConectado()) {
                 enviarNotificacoes("Há um novo leilão disponível, queira consultar os leilões disponíveis." , licitador.getAddress());
@@ -228,6 +222,8 @@ public class Servidor {
             }
         }
         if (leilaoExiste && maiorLicitacao && temPlafond) {
+            atualizarFicheiroLeiloes();
+            atualizarFicheiroLicitadores();
             for (Licitador licitador : licitadores) {
                 if (licitador.getUsername().equals(pedido.getUsername())) {
                     enviarNotificacoes("A sua licitação foi aceite.", licitador.getAddress());
@@ -261,54 +257,6 @@ public class Servidor {
                 }
             }
         }
-        /*if (leiloes.containsKey(pedido.getIdLeilao())) {
-            if (leiloes.get(pedido.getIdLeilao()).temLicitacoes()) {
-                if (pedido.getQuantia() > leiloes.get(pedido.getIdLeilao()).getMaiorLicitacao().getQuantia()) {
-                    if (licitadores.get(pedido.getUsername()).retirarDinheiro(pedido.getQuantia())) {
-                        licitadores.get(leiloes.get(pedido.getIdLeilao()).getMaiorLicitacao().getUsername()).adicionarDinheiro(leiloes.get(pedido.getIdLeilao()).getMaiorLicitacao().getQuantia());
-                        leiloes.get(pedido.getIdLeilao()).fazerLicitacao(pedido);
-                        //TODO atualizar os dois ficheiros
-                        enviarNotificacoes("A sua licitação foi aceite.", licitadores.get(pedido.getUsername()).getAddress());
-                        HashSet<String> licitadoresDoLeilao = new HashSet<String>();
-                        for (Licitacao licitacao : leiloes.get(pedido.getIdLeilao()).getLicitacoes()) {
-                            if (!licitacao.getUsername().equals(pedido.getUsername()) && !licitadoresDoLeilao.contains(licitacao.getUsername())) {
-                                enviarNotificacoes("Foi recebida uma nova licitação no leilão com ID " + pedido.getIdLeilao() + ".", licitadores.get(licitacao.getUsername()).getAddress());
-                                licitadoresDoLeilao.add(licitacao.getUsername());
-                            }
-                        }
-                    }
-                    else {
-                        enviarNotificacoes("A sua solicitação não foi aceite, o valor da sua proposta é superior ao seu plafond.", licitadores.get(pedido.getUsername()).getAddress());
-                    }
-                } else {
-                    enviarNotificacoes("A sua licitação não foi aceite, o valor proposto não é superior ao máximo atual.", licitadores.get(pedido.getUsername()).getAddress());
-                }
-            }
-            else {
-                if (pedido.getQuantia() >= leiloes.get(pedido.getIdLeilao()).getValorInicial()) {
-                    if (licitadores.get(pedido.getUsername()).retirarDinheiro(pedido.getQuantia())) {
-                        leiloes.get(pedido.getIdLeilao()).fazerLicitacao(pedido);
-                        //TODO atualizar os dois ficheiros
-                        enviarNotificacoes("A sua licitação foi aceite.", licitadores.get(pedido.getUsername()).getAddress());
-                        HashSet<String> licitadoresDoLeilao = new HashSet<String>();
-                        for (Licitacao licitacao : leiloes.get(pedido.getIdLeilao()).getLicitacoes()) {
-                            if (!licitacao.getUsername().equals(pedido.getUsername()) && !licitadoresDoLeilao.contains(licitacao.getUsername())) {
-                                enviarNotificacoes("Foi recebida uma nova licitação no leilão com ID " + pedido.getIdLeilao() + ".", licitadores.get(licitacao.getUsername()).getAddress());
-                                licitadoresDoLeilao.add(licitacao.getUsername());
-                            }
-                        }
-                    }
-                    else {
-                        enviarNotificacoes("A sua solicitação não foi aceite, o valor da sua proposta é superior ao seu plafond.", licitadores.get(pedido.getUsername()).getAddress());
-                    }
-                } else {
-                    enviarNotificacoes("A sua licitação não foi aceite, o valor proposto não é superior ao máximo atual.", licitadores.get(pedido.getUsername()).getAddress());
-                }
-            }
-        }
-        else  {
-            enviarNotificacoes("O leilão com o ID " + pedido.getIdLeilao() + " não existe ou já não está disponível.", licitadores.get(pedido.getUsername()).getAddress());
-        }*/
     }
 
     public void responderListaLeiloes(Pedido pedido) throws IOException {
@@ -359,42 +307,34 @@ public class Servidor {
         output.send(pacote);
     }
 
-/*    public void verificarLeiloes() {
+    public void verificarLeiloes() {
         while (true) {
-            for (final Integer leilaoId : new ArrayList<Integer>(this.leiloes.keySet())) {
-                if (leiloes.get(leilaoId).hasFinished()) {
+            for (int i = 0; i < leiloes.size(); i++) {
+                if (leiloes.get(i).hasFinished()) {
+                    final Leilao leilao = leiloes.remove(i);
                     Thread thread = new Thread(new Runnable() {
                         public void run() {
                             try {
-                                fecharLeiloes(leiloes.get(leilaoId));
+                                fecharLeiloes(leilao);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
                     });
                     thread.start();
-                    this.leiloes.remove(leilaoId);
-                    //TODO atualizar os dois ficheiros
+                    try {
+                        atualizarFicheiroLeiloes();
+                        atualizarFicheiroLicitadores();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 }
             }
         }
     }
 
     public void fecharLeiloes(Leilao leilao) throws IOException {
-        if (leilao.temLicitacoes()) {
-            licitadores.get(leilao.getAutor().getUsername()).adicionarDinheiro(leilao.getMaiorLicitacao().getQuantia());
-            enviarNotificacoes("O bem presente no leilão com o ID " + leilao.getId() + " foi vendido à pessoa " + leilao.getMaiorLicitacao().getUsername() + " com o valor " + leilao.getMaiorLicitacao().getQuantia() + " de euros.", licitadores.get(leilao.getAutor().getUsername()).getSocket());
-            enviarNotificacoes("Parabéns! Foi o vencedor do leilão com o ID " + leilao.getId() + " no valor de " + leilao.getMaiorLicitacao().getQuantia() + " euros.", licitadores.get(leilao.getMaiorLicitacao().getUsername()).getSocket());
-            Set<String> licitadoresDoLeilao = new HashSet<String>();
-            for (Licitacao licitacao : leilao.getLicitacoes()) {
-                if (!licitacao.equals(leilao.getAutor().getUsername()) && !licitacao.getUsername().equals(leilao.getMaiorLicitacao().getUsername()) && !licitadoresDoLeilao.contains(licitacao.getUsername())) {
-                    licitadoresDoLeilao.add(licitacao.getUsername());
-                    enviarNotificacoes("O leilão com o ID " + leilao.getId() + " no qual realizou licitações já fechou, infelizmente você não foi o vencedor.", licitadores.get(licitacao.getUsername()).getSocket());
-                }
-            }
-        }
-        else {
-            enviarNotificacoes("Lamentamos, mas o seu leilão com o ID " + leilao.getId() + " fechou sem qualquer licitação.", licitadores.get(leilao.getAutor().getUsername()).getSocket());
-        }
-    }*/
+        System.out.println("O leilão com o ID " + leilao.getId() + " fechou");
+    }
 }

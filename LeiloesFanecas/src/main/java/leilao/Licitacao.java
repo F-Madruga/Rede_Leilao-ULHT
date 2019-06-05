@@ -21,6 +21,6 @@ public class Licitacao extends Pedido {
 
     @Override
     public String toString() {
-        return super.toString() + ":" + quantia + ":" + idLeilao;
+        return super.toString() + "#" + quantia + "#" + idLeilao;
     }
 }
