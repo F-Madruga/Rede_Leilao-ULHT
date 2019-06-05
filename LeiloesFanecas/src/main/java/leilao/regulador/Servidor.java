@@ -91,7 +91,7 @@ public class Servidor {
                 plafond = scanner.nextLine();
             } while (!verificarSeDouble(plafond));
             licitadores.add(new Licitador(username, password, Double.parseDouble(plafond)));
-            atualizarFicheiroLicitadores();//TODO garantir que continua a funcionar aqui
+            atualizarFicheiroLicitadores();
             System.out.println("Utilizador registado");
         }
     }
@@ -106,7 +106,7 @@ public class Servidor {
         }
     }
 
-    public void reendirecionarPedido(Socket socket) throws IOException, NoSuchAlgorithmException, ClassNotFoundException {
+    public void reendirecionarPedido(Socket socket) throws IOException, NoSuchAlgorithmException {
         //ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
         BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         //Pedido pedido;
@@ -174,7 +174,6 @@ public class Servidor {
                 break;
             }
         }
-        //TODO
         atualizarFicheiroLeiloes();
         for (Licitador licitador : licitadores) {
             if (!licitador.getUsername().equals(pedido.getUsername()) && licitador.estaConectado()) {
@@ -302,9 +301,9 @@ public class Servidor {
     }
 
     public synchronized void enviarNotificacoes(String mensagem, String address) throws IOException {
-        DatagramPacket pacote = new DatagramPacket(mensagem.getBytes(), mensagem.getBytes().length, InetAddress.getByName(address), port);
-        DatagramSocket output = new DatagramSocket();
-        output.send(pacote);
+            DatagramPacket pacote = new DatagramPacket(mensagem.getBytes(), mensagem.getBytes().length, InetAddress.getByName(address), port);
+            DatagramSocket output = new DatagramSocket();
+            output.send(pacote);
     }
 
     public void verificarLeiloes() {
@@ -335,6 +334,12 @@ public class Servidor {
     }
 
     public void fecharLeiloes(Leilao leilao) throws IOException {
-        System.out.println("O leilão com o ID " + leilao.getId() + " fechou");
+        /*TODO
+        - Caso não houver licitações enviar mensagem ao autor do leilão
+        - Caso haja licitações fazer o seguinte:
+            - Enviar mensagem ao vencedor
+            - Enviar mensagem ao autor
+            - Dar o dinheiro da maior licitação ao autor
+            - Enviar mensagem a todos os participantes (excepto o autor e o vencedor) a dizer que o leilão acabou*/
     }
 }
