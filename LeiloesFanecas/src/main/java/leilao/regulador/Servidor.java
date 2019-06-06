@@ -345,7 +345,7 @@ public class Servidor {
                     enviarNotificacoes("O bem presente no leilão com o ID " + leilao.getId() + " foi vendido à pessoa " + leilao.getMaiorLicitacao().getUsername() + "com o valor " + leilao.getMaiorLicitacao().getQuantia() + "euros.", licitador.getAddress());
                 }
                 for (Licitacao licitacao : leilao.getLicitacoes()) {
-                    if (!licitador.getUsername().equals(leilao.getAutor()) && !licitador.getUsername().equals(leilao.getMaiorLicitacao().getUsername())) {
+                    if (!licitador.getUsername().equals(leilao.getAutor()) || !licitador.getUsername().equals(leilao.getMaiorLicitacao().getUsername())) {
                         if (!licitadorSet.contains(licitador) && licitacao.getUsername().equals(licitador.getUsername())) {
                             enviarNotificacoes("O leilão com o ID " + leilao.getId() + " no qual realizou licitações já fechou, infelizmente você não foi o vencedor.", licitador.getAddress());
                             licitadorSet.add(licitador);

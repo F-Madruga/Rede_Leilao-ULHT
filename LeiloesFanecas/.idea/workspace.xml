@@ -8,14 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="253996c3-0b39-455f-a077-2ff017c6a456" name="Default Changelist" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/leilao/licitador/Main.class" afterPath="$PROJECT_DIR$/target/classes/leilao/licitador/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Main.class" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$4.class" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor.class" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LeiloesFanecas.iml" afterPath="$PROJECT_DIR$/LeiloesFanecas.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/leilao/licitador/Main.java" afterPath="$PROJECT_DIR$/src/main/java/leilao/licitador/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/leilao/regulador/Main.java" afterPath="$PROJECT_DIR$/src/main/java/leilao/regulador/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java" afterPath="$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -68,20 +61,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Servidor.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Servidor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="357" column="9" lean-forward="true" selection-start-line="357" selection-start-column="9" selection-end-line="357" selection-end-column="9" />
+            <state relative-caret-position="322">
+              <caret line="347" column="77" lean-forward="false" selection-start-line="347" selection-start-column="77" selection-end-line="347" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#start#0;class#Servidor#0" expanded="false" />
-                <element signature="e#1009#1117#0" expanded="true" />
-                <element signature="e#1116#1117#0" expanded="true" />
-                <element signature="e#1214#1450#0" expanded="true" />
-                <element signature="e#1449#1450#0" expanded="true" />
-                <element signature="e#1627#1908#0" expanded="true" />
-                <element signature="e#1907#1908#0" expanded="true" />
                 <element signature="method#registarLicitadores#0;class#Servidor#0" expanded="false" />
                 <element signature="method#verificarSeDouble#0;class#Servidor#0" expanded="false" />
                 <element signature="method#reendirecionarPedido#0;class#Servidor#0" expanded="false" />
@@ -96,9 +83,6 @@
                 <element signature="method#atualizarFicheiroLicitadores#0;class#Servidor#0" expanded="false" />
                 <element signature="method#enviarNotificacoes#0;class#Servidor#0" expanded="false" />
                 <element signature="method#verificarLeiloes#0;class#Servidor#0" expanded="false" />
-                <element signature="e#13685#14017#0" expanded="true" />
-                <element signature="e#14016#14017#0" expanded="true" />
-                <element signature="e#14600#14611#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,11 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="133">
-              <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+              <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -175,7 +159,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -201,7 +185,7 @@
     <panes>
       <pane id="AndroidView" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -243,7 +227,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -363,43 +347,44 @@
       <workItem from="1559738674533" duration="1600000" />
       <workItem from="1559740770590" duration="4488000" />
       <workItem from="1559748929063" duration="4234000" />
-      <workItem from="1559760231178" duration="1722000" />
+      <workItem from="1559760231178" duration="2180000" />
+      <workItem from="1559806364251" duration="73000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82565000" />
+    <option name="totallyTimeSpent" value="83096000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22547585" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22547585" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296355" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -415,11 +400,51 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1501">
+          <caret line="357" column="9" lean-forward="false" selection-start-line="357" selection-start-column="9" selection-end-line="357" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#start#0;class#Servidor#0" expanded="false" />
+            <element signature="method#registarLicitadores#0;class#Servidor#0" expanded="false" />
+            <element signature="method#verificarSeDouble#0;class#Servidor#0" expanded="false" />
+            <element signature="method#reendirecionarPedido#0;class#Servidor#0" expanded="false" />
+            <element signature="method#responderPlafond#0;class#Servidor#0" expanded="false" />
+            <element signature="method#responderAutenticacao#0;class#Servidor#0" expanded="false" />
+            <element signature="method#responderCriarLeilao#0;class#Servidor#0" expanded="false" />
+            <element signature="method#responderLicitacao#0;class#Servidor#0" expanded="false" />
+            <element signature="method#responderListaLeiloes#0;class#Servidor#0" expanded="false" />
+            <element signature="method#lerFicheiroLeiloes#0;class#Servidor#0" expanded="false" />
+            <element signature="method#lerFicheiroLicitadores#0;class#Servidor#0" expanded="false" />
+            <element signature="method#atualizarFicheiroLeiloes#0;class#Servidor#0" expanded="false" />
+            <element signature="method#atualizarFicheiroLicitadores#0;class#Servidor#0" expanded="false" />
+            <element signature="method#enviarNotificacoes#0;class#Servidor#0" expanded="false" />
+            <element signature="method#verificarLeiloes#0;class#Servidor#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/licitador/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="63" lean-forward="false" selection-start-line="6" selection-start-column="55" selection-end-line="6" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Serializador.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -435,9 +460,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -445,15 +467,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1140">
           <caret line="133" column="71" lean-forward="false" selection-start-line="133" selection-start-column="71" selection-end-line="133" selection-end-column="71" />
-          <folding>
-            <element signature="method#receberNotificacoes#0;class#Cliente#0" expanded="false" />
-            <element signature="method#fazerPedidos#0;class#Cliente#0" expanded="false" />
-            <element signature="method#autenticar#0;class#Cliente#0" expanded="false" />
-            <element signature="method#fazerLicitacao#0;class#Cliente#0" expanded="false" />
-            <element signature="method#verificarResposta#0;class#Cliente#0" expanded="false" />
-            <element signature="method#verificarSeDouble#0;class#Cliente#0" expanded="false" />
-            <element signature="method#verificarSeInt#0;class#Cliente#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -462,7 +475,6 @@
         <state relative-caret-position="342">
           <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
           <caret line="23" column="52" lean-forward="false" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -470,10 +482,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="e#456#457#0" expanded="true" />
-            <element signature="e#512#513#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -503,12 +511,6 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#start#0;class#Servidor#0" expanded="false" />
-            <element signature="e#1009#1117#0" expanded="true" />
-            <element signature="e#1116#1117#0" expanded="true" />
-            <element signature="e#1214#1450#0" expanded="true" />
-            <element signature="e#1449#1450#0" expanded="true" />
-            <element signature="e#1627#1908#0" expanded="true" />
-            <element signature="e#1907#1908#0" expanded="true" />
             <element signature="method#registarLicitadores#0;class#Servidor#0" expanded="false" />
             <element signature="method#verificarSeDouble#0;class#Servidor#0" expanded="false" />
             <element signature="method#reendirecionarPedido#0;class#Servidor#0" expanded="false" />
@@ -523,9 +525,6 @@
             <element signature="method#atualizarFicheiroLicitadores#0;class#Servidor#0" expanded="false" />
             <element signature="method#enviarNotificacoes#0;class#Servidor#0" expanded="false" />
             <element signature="method#verificarLeiloes#0;class#Servidor#0" expanded="false" />
-            <element signature="e#13685#14017#0" expanded="true" />
-            <element signature="e#14016#14017#0" expanded="true" />
-            <element signature="e#14600#14611#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -569,7 +568,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="266">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -577,15 +575,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1140">
           <caret line="133" column="71" lean-forward="false" selection-start-line="133" selection-start-column="71" selection-end-line="133" selection-end-column="71" />
-          <folding>
-            <element signature="method#receberNotificacoes#0;class#Cliente#0" expanded="false" />
-            <element signature="method#fazerPedidos#0;class#Cliente#0" expanded="false" />
-            <element signature="method#autenticar#0;class#Cliente#0" expanded="false" />
-            <element signature="method#fazerLicitacao#0;class#Cliente#0" expanded="false" />
-            <element signature="method#verificarResposta#0;class#Cliente#0" expanded="false" />
-            <element signature="method#verificarSeDouble#0;class#Cliente#0" expanded="false" />
-            <element signature="method#verificarSeInt#0;class#Cliente#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -594,7 +583,6 @@
         <state relative-caret-position="342">
           <caret line="23" column="36" lean-forward="false" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
           <caret line="23" column="52" lean-forward="false" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -621,9 +609,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -639,44 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="e#456#457#0" expanded="true" />
-            <element signature="e#512#513#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="357" column="9" lean-forward="true" selection-start-line="357" selection-start-column="9" selection-end-line="357" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#start#0;class#Servidor#0" expanded="false" />
-            <element signature="e#1009#1117#0" expanded="true" />
-            <element signature="e#1116#1117#0" expanded="true" />
-            <element signature="e#1214#1450#0" expanded="true" />
-            <element signature="e#1449#1450#0" expanded="true" />
-            <element signature="e#1627#1908#0" expanded="true" />
-            <element signature="e#1907#1908#0" expanded="true" />
-            <element signature="method#registarLicitadores#0;class#Servidor#0" expanded="false" />
-            <element signature="method#verificarSeDouble#0;class#Servidor#0" expanded="false" />
-            <element signature="method#reendirecionarPedido#0;class#Servidor#0" expanded="false" />
-            <element signature="method#responderPlafond#0;class#Servidor#0" expanded="false" />
-            <element signature="method#responderAutenticacao#0;class#Servidor#0" expanded="false" />
-            <element signature="method#responderCriarLeilao#0;class#Servidor#0" expanded="false" />
-            <element signature="method#responderLicitacao#0;class#Servidor#0" expanded="false" />
-            <element signature="method#responderListaLeiloes#0;class#Servidor#0" expanded="false" />
-            <element signature="method#lerFicheiroLeiloes#0;class#Servidor#0" expanded="false" />
-            <element signature="method#lerFicheiroLicitadores#0;class#Servidor#0" expanded="false" />
-            <element signature="method#atualizarFicheiroLeiloes#0;class#Servidor#0" expanded="false" />
-            <element signature="method#atualizarFicheiroLicitadores#0;class#Servidor#0" expanded="false" />
-            <element signature="method#enviarNotificacoes#0;class#Servidor#0" expanded="false" />
-            <element signature="method#verificarLeiloes#0;class#Servidor#0" expanded="false" />
-            <element signature="e#13685#14017#0" expanded="true" />
-            <element signature="e#14016#14017#0" expanded="true" />
-            <element signature="e#14600#14611#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -691,8 +638,33 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
-          <caret line="7" column="25" lean-forward="true" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="347" column="77" lean-forward="false" selection-start-line="347" selection-start-column="77" selection-end-line="347" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#start#0;class#Servidor#0" expanded="false" />
+            <element signature="method#registarLicitadores#0;class#Servidor#0" expanded="false" />
+            <element signature="method#verificarSeDouble#0;class#Servidor#0" expanded="false" />
+            <element signature="method#reendirecionarPedido#0;class#Servidor#0" expanded="false" />
+            <element signature="method#responderPlafond#0;class#Servidor#0" expanded="false" />
+            <element signature="method#responderAutenticacao#0;class#Servidor#0" expanded="false" />
+            <element signature="method#responderCriarLeilao#0;class#Servidor#0" expanded="false" />
+            <element signature="method#responderLicitacao#0;class#Servidor#0" expanded="false" />
+            <element signature="method#responderListaLeiloes#0;class#Servidor#0" expanded="false" />
+            <element signature="method#lerFicheiroLeiloes#0;class#Servidor#0" expanded="false" />
+            <element signature="method#lerFicheiroLicitadores#0;class#Servidor#0" expanded="false" />
+            <element signature="method#atualizarFicheiroLeiloes#0;class#Servidor#0" expanded="false" />
+            <element signature="method#atualizarFicheiroLicitadores#0;class#Servidor#0" expanded="false" />
+            <element signature="method#enviarNotificacoes#0;class#Servidor#0" expanded="false" />
+            <element signature="method#verificarLeiloes#0;class#Servidor#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
