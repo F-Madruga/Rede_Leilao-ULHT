@@ -1,7 +1,7 @@
 package leilao.regulador;
 
 import leilao.*;
-import leilao.licitador.Licitador;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;

@@ -1,6 +1,7 @@
-package leilao.licitador;
+package leilao.regulador;
 
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 
 public class Licitador implements Serializable {
 
@@ -21,47 +22,38 @@ public class Licitador implements Serializable {
         return username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public double getPlafond() {
         return plafond;
-    }
-
-    public boolean estaConectado() {
-        return conectado;
-    }
-
-    public boolean conectar(String password, String address) {
-        if (this.password.equals(password)) {
-            conectado = true;
-            this.address = address;
-            return true;
-        }
-        return false;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void desconectar() {
+    public boolean estaConectado() {
+        return this.conectado;
+    }
+
+    public boolean autenticar(String username, String password) throws NoSuchAlgorithmException {
+        return this.username.equals(username) && SHA256.generate(password.getBytes()).equals(this.password) && !conectado;
+    }
+
+    public synchronized void conectar(String address) {
+        this.address = address;
+        this.conectado = true;
+    }
+
+    public synchronized void desconectar() {
+        this.address = "";
         this.conectado = false;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        Licitador outroLicitador = (Licitador) obj;
-        return outroLicitador.getUsername().equals(this.username);
+    public boolean temQuantia(double dinheiro) {
+        return this.plafond >= dinheiro;
     }
 
-    public synchronized boolean retirarDinheiro(double dinheiro) {
-        if (this.plafond - dinheiro >= 0) {
-            this.plafond -= dinheiro;
-            return true;
-        }
-        return false;
+    public synchronized void retirarDinheiro(double dinheiro) {
+        this.plafond -= dinheiro;
     }
 
     public synchronized void adicionarDinheiro(double dinheiro) {
@@ -69,8 +61,12 @@ public class Licitador implements Serializable {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        return ((Licitador) obj).getUsername().equals(this.username);
+    }
+
+    @Override
     public String toString() {
         return this.getUsername() + " " + this.plafond + " " + this.address + " " + this.password;
     }
 }
-

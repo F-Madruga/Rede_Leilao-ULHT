@@ -11,9 +11,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
 public class Cliente {
 
@@ -29,7 +27,6 @@ public class Cliente {
     }
 
     public void start() throws IOException {
-        autenticar();
         Thread thread = new Thread(new Runnable() {
             public void run() {
                 try {
@@ -39,8 +36,76 @@ public class Cliente {
                 }
             }
         });
-        thread.start();
-        fazerPedidos();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Escolha uma opção");
+        System.out.println("1 - Modo manual");
+        System.out.println("2 - Modo automático");
+        String resposta = scanner.nextLine();
+        switch (Integer.parseInt(resposta)) {
+            case 1:
+                autenticar();
+                thread.start();
+                fazerPedidos();
+                break;
+            case 2:
+                List<ClienteAutomatico> clienteAutomaticos = definirClientesAutomaticos();
+                thread.start();
+                for (final ClienteAutomatico clienteAutomatico : clienteAutomaticos) {
+                    Thread threadClientAutomatico = new Thread(new Runnable() {
+                        public void run() {
+                            try {
+                                fazerPedidosAutomatico( clienteAutomatico);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    threadClientAutomatico.start();
+                }
+        }
+    }
+
+    public void fazerPedidosAutomatico(ClienteAutomatico cliente) throws IOException {
+        PrintWriter out = new PrintWriter(outputSocket.getOutputStream());
+        for (int i = 0; i < cliente.getNumeroLicitacoes(); i++) {
+            out.println(new Licitacao(cliente.getUsername(), cliente.getValorPrimeiraLicitacao() + (cliente.getIncrementoLicitacao() * i), cliente.getIdLeilao()));
+            long tempoInicial = System.currentTimeMillis();
+            while (System.currentTimeMillis() - tempoInicial < cliente.getTempoEntreLicitacao());
+        }
+    }
+
+    public List<ClienteAutomatico> definirClientesAutomaticos() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Quantos cliente deseja iniciar?");
+        int numeroClientes = Integer.parseInt(scanner.nextLine());
+        List<ClienteAutomatico> clienteAutomaticos = new ArrayList<ClienteAutomatico>();
+        for (int i = 1; i <= numeroClientes; i++) {
+            String resposta;
+            String username;
+            do {
+                byte[] buffer = new byte[256];
+                System.out.println("Insira o seu username do cliente " + i);
+                username = scanner.nextLine();
+                System.out.println("Insira a sua password do cliente " + i);
+                output.println(new Autenticacao(username, scanner.nextLine()));
+                DatagramPacket pacote = new DatagramPacket(buffer, buffer.length);
+                inputSocket.receive(pacote);
+                resposta = new String(pacote.getData()).trim();
+                System.out.println(resposta);
+            } while (!resposta.equals("Utilizador verificado"));
+            System.out.println("Insira o ID do leilão que o cliente " + i + " deve licitar");
+            int idLeilao = Integer.parseInt(scanner.nextLine());
+            System.out.println("Insira o numero de licitações que o cliente " + i + " deve executar");
+            int numeroLicitacoes = Integer.parseInt(scanner.nextLine());
+            System.out.println("Insira o tempo que o cliente " + i + " deve esperar entre licitacoes");
+            int tempoEspera = Integer.parseInt(scanner.nextLine());
+            System.out.println("Insira o valor inicial que o cliente " + i + " deve licitar");
+            double valorInicial = Double.parseDouble(scanner.nextLine());
+            System.out.println("Insira o valor que o cliente " + i + " deve acrescentar à licitação anterior (incremento da licitação)");
+            double incremento = Double.parseDouble(scanner.nextLine());
+            clienteAutomaticos.add(new ClienteAutomatico(username, idLeilao, numeroLicitacoes, tempoEspera, valorInicial, incremento));
+        }
+        return clienteAutomaticos;
     }
 
     public void receberNotificacoes() throws IOException {

@@ -1,7 +1,6 @@
 package leilao.regulador;
 
 import leilao.Licitacao;
-import leilao.licitador.Licitador;
 
 import java.io.Serializable;
 import java.util.*;
