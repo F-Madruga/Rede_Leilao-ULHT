@@ -8,15 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fec6badf-fa92-44d0-a1d8-dd96fffa7b09" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Clientejar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Servidor_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Clientejar/Cliente.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Servidor_jar/Servidor.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leilao/licitador/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leilao/licitador/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/licitador/Cliente$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/licitador/Cliente$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/licitador/Cliente$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/licitador/Cliente$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/licitador/Cliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/licitador/Cliente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -55,11 +47,11 @@
         <option value="$PROJECT_DIR$/src/main/java/leilao/regulador/Leilao.java" />
         <option value="$PROJECT_DIR$/src/main/java/leilao/regulador/Licitador.java" />
         <option value="$PROJECT_DIR$/src/main/java/leilao/licitador/LicitadorAutomatico.java" />
-        <option value="$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java" />
         <option value="$PROJECT_DIR$/src/main/java/leilao/regulador/Serializador.java" />
         <option value="$PROJECT_DIR$/src/main/java/leilao/Pedido.java" />
         <option value="$PROJECT_DIR$/src/main/java/leilao/PedidoCriarLeilao.java" />
         <option value="$PROJECT_DIR$/src/main/java/leilao/licitador/Cliente.java" />
+        <option value="$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java" />
       </list>
     </option>
   </component>
@@ -76,65 +68,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="LeiloeiraFanecas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LeiloeiraFanecas" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LeiloeiraFanecas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LeiloeiraFanecas" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LeiloeiraFanecas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LeiloeiraFanecas" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LeiloeiraFanecas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LeiloeiraFanecas" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LeiloeiraFanecas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LeiloeiraFanecas" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LeiloeiraFanecas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LeiloeiraFanecas" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LeiloeiraFanecas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LeiloeiraFanecas" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="leilao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="LeiloeiraFanecas" type="b2602c69:ProjectViewProjectNode" />
-              <item name="LeiloeiraFanecas" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="leilao" type="462c0819:PsiDirectoryNode" />
-              <item name="licitador" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -217,7 +153,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="52" width="2736" height="1772" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20625943" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20927602" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -234,7 +170,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.18877888" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.41848186" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -338,33 +274,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
-          <folding>
-            <element signature="method#Servidor#0;class#Servidor#0" />
-            <element signature="method#start#0;class#Servidor#0" />
-            <element signature="e#1351#1512#0" expanded="true" />
-            <element signature="e#1511#1512#0" expanded="true" />
-            <element signature="method#registarLicitador#0;class#Servidor#0" />
-            <element signature="method#enviarNotificacoes#0;class#Servidor#0" />
-            <element signature="method#reendirecionarPedido#0;class#Servidor#0" />
-            <element signature="method#responderAutenticacao#0;class#Servidor#0" />
-            <element signature="method#responderCriarLeilao#0;class#Servidor#0" />
-            <element signature="method#responderLicitacao#0;class#Servidor#0" />
-            <element signature="method#responderListaLeiloes#0;class#Servidor#0" />
-            <element signature="method#responderPlafond#0;class#Servidor#0" />
-            <element signature="method#lerFicheiroLeiloes#0;class#Servidor#0" />
-            <element signature="method#lerFicheiroLicitadores#0;class#Servidor#0" />
-            <element signature="method#atualizarFicheiroLeiloes#0;class#Servidor#0" />
-            <element signature="method#atualizarFicheiroLicitadores#0;class#Servidor#0" />
-            <element signature="method#verificarLeiloes#0;class#Servidor#0" />
-            <element signature="method#fecharLeiloes#0;class#Servidor#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/SHA256.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
@@ -416,6 +325,31 @@
             <element signature="method#pedirLeiloes#0;class#Cliente#0" />
             <element signature="method#pedirPlafond#0;class#Cliente#0" />
             <element signature="method#quit#0;class#Cliente#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="18" column="40" lean-forward="true" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+          <folding>
+            <element signature="method#Servidor#0;class#Servidor#0" />
+            <element signature="method#start#0;class#Servidor#0" />
+            <element signature="method#registarLicitador#0;class#Servidor#0" />
+            <element signature="method#enviarNotificacoes#0;class#Servidor#0" />
+            <element signature="method#reendirecionarPedido#0;class#Servidor#0" />
+            <element signature="method#responderAutenticacao#0;class#Servidor#0" />
+            <element signature="method#responderCriarLeilao#0;class#Servidor#0" />
+            <element signature="method#responderLicitacao#0;class#Servidor#0" />
+            <element signature="method#responderListaLeiloes#0;class#Servidor#0" />
+            <element signature="method#responderPlafond#0;class#Servidor#0" />
+            <element signature="method#lerFicheiroLeiloes#0;class#Servidor#0" />
+            <element signature="method#lerFicheiroLicitadores#0;class#Servidor#0" />
+            <element signature="method#atualizarFicheiroLeiloes#0;class#Servidor#0" />
+            <element signature="method#atualizarFicheiroLicitadores#0;class#Servidor#0" />
+            <element signature="method#verificarLeiloes#0;class#Servidor#0" />
+            <element signature="method#fecharLeiloes#0;class#Servidor#0" />
           </folding>
         </state>
       </provider>
