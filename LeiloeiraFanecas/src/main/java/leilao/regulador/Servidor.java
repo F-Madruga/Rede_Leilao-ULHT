@@ -295,7 +295,6 @@ public class Servidor {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
         }
     }
@@ -322,7 +321,7 @@ public class Servidor {
         else {
             for (Licitador licitador : this.licitadores) {
                 if (licitador.estaConectado() && licitador.getUsername().equals(leilao.getAutor())) {
-                    enviarNotificacoes("Lamentamos, mas o seu leilão com o ID " + leilao.getId() + "fechou sem qualquer licitacão.", licitador.getAddress());
+                    enviarNotificacoes("Lamentamos, mas o seu leilão com o ID " + leilao.getId() + " fechou sem qualquer licitacão.", licitador.getAddress());
                     break;
                 }
             }
