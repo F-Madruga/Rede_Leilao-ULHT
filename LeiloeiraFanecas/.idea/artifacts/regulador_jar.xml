@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="Servidor:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Servidor_jar</output-path>
-    <root id="archive" name="Servidor.jar">
+  <artifact type="jar" name="regulador:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/regulador_jar</output-path>
+    <root id="archive" name="regulador.jar">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/resources/Servidor/META-INF/MANIFEST.MF" />
       </element>

@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="Clientejar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Clientejar</output-path>
-    <root id="archive" name="Cliente.jar">
+  <artifact type="jar" name="licitador:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/licitador_jar</output-path>
+    <root id="archive" name="licitador.jar">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/resources/Cliente/META-INF/MANIFEST.MF" />
       </element>

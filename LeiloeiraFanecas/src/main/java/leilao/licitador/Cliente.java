@@ -28,13 +28,15 @@ public class Cliente {
         Scanner scanner = new Scanner(System.in);
         Thread threadReceberNotificacoes = new Thread(new Runnable() {
             public void run() {
-                while (true) {
+                String resposta = "";
+                do {
                     try {
-                        System.out.println(receberNotificacoes());
+                        resposta = receberNotificacoes();
+                        System.out.println(resposta);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                }
+                } while (!resposta.equals("quit"));
             }
         });
         System.out.println("Escolha uma opção");
