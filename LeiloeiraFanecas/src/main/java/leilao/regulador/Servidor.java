@@ -125,7 +125,7 @@ public class Servidor {
                 default:
                     enviarNotificacoes("Comando inválido", socket.getInetAddress().getHostAddress());
             }
-        } while (Integer.parseInt(pedido[1]) != 0);
+        } while (Integer.parseInt(pedido[1]) != Pedido.QUIT);
     }
 
     public synchronized void responderAutenticacao(Autenticacao pedido, Socket socket) throws Exception {

@@ -3,7 +3,8 @@ package leilao.regulador;
 import java.io.*;
 
 public class Serializador implements Serializable {
-    public  static void serialize(Object toSerialize, String fileName) throws IOException {
+
+    public static void serialize(Object toSerialize, String fileName) throws IOException {
         FileOutputStream file = new FileOutputStream(fileName);
         ObjectOutputStream out = new ObjectOutputStream(file);
         out.writeObject(toSerialize);
