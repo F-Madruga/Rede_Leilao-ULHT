@@ -25,7 +25,6 @@ public class Cliente {
         this.ip = ip;
         this.port = port;
         this.inputSocket = new DatagramSocket(port);
-        this.outputSocket = new Socket(ip, port);
     }
 
     public void start() throws Exception {
@@ -49,6 +48,7 @@ public class Cliente {
     }
 
     public void iniciarModoManual() throws Exception {
+        this.outputSocket = new Socket(ip, port);
         Scanner scanner = new Scanner(System.in);
         String username;
         String password;
@@ -125,12 +125,17 @@ public class Cliente {
             System.out.println("Insira o valor a incrementar às licitações ao cliente " + i);
             double incremento = Double.parseDouble(scanner.nextLine());
             LicitadorAutomatico licitadorAutomatico = new LicitadorAutomatico(user, pass, idLeilao, numeroLicitacoes, tempoEspera, valorInicial, incremento, outputSocket);
-            while (!autenticar(licitadorAutomatico.getUsername(), licitadorAutomatico.getPassword())) {
+            licitadorAutomatico.enviarPedido(new Autenticacao(licitadorAutomatico.getUsername(), licitadorAutomatico.getPassword()));
+            String respota = receberNotificacoes();
+            while (!respota.equals("Utilizador verificado")) {
                 System.out.println("Insira de novo o username do cliente " + i);
                 licitadorAutomatico.setUsername(scanner.nextLine());
                 System.out.println("Insira de novo a password do cliente " + i);
                 licitadorAutomatico.setPassword(scanner.nextLine());
+                licitadorAutomatico.enviarPedido(new Autenticacao(licitadorAutomatico.getUsername(), licitadorAutomatico.getPassword()));
+                respota = receberNotificacoes();
             }
+            System.out.println(respota);
             licitadoresAutomaticos.add(licitadorAutomatico);
         }
         return licitadoresAutomaticos;

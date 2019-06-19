@@ -297,11 +297,11 @@ public class Servidor {
         for (int i = 0; i < this.leiloes.size(); i++){
             if (leiloes.get(i).hasFinished() && !leiloes.get(i).terminado()) {
                 leiloes.get(i).terminar();
-                final int indexLeliao = i;
+                final int indexLeilao = i;
                 Thread thread = new Thread(new Runnable() {
                     public void run() {
                         try {
-                            fecharLeiloes(leiloes.get(indexLeliao));
+                            fecharLeiloes(leiloes.get(indexLeilao));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -319,6 +319,7 @@ public class Servidor {
     }
 
     public void fecharLeiloes(Leilao leilao) throws Exception {
+        System.out.println("O leilão com o Id " + leilao.getId() + " terminou");
         if (leilao.temLicitacoes()) {
             for (Licitador licitador : this.licitadores) {
                 if (licitador.estaConectado()) {

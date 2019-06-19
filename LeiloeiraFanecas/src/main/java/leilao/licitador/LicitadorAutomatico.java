@@ -69,6 +69,7 @@ public class LicitadorAutomatico {
         PrintWriter output = new PrintWriter(this.socket.getOutputStream(), true);
         output.println(pedido);
     }
+
     @Override
     public String toString() {
         return "Username - " + this.username + "\nId leilao - " + this.idLeilao + "\nNumero de licitacoes - " + this.numeroLicitacoes + "\nTempo entre licitacoes - " + this.tempoEspera + "ms\nValor da primeira licitação - " + this.valorInicial + "\nIncremento das licitações - " + this.incrementoLicitacao + "\n";
