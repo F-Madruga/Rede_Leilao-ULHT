@@ -297,11 +297,11 @@ public class Servidor {
         for (int i = 0; i < this.leiloes.size(); i++){
             if (leiloes.get(i).hasFinished() && !leiloes.get(i).terminado()) {
                 leiloes.get(i).terminar();
-                final int j = i;
+                final int indexLeliao = i;
                 Thread thread = new Thread(new Runnable() {
                     public void run() {
                         try {
-                            fecharLeiloes(leiloes.get(j));
+                            fecharLeiloes(leiloes.get(indexLeliao));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
