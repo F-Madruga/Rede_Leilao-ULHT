@@ -66,14 +66,15 @@ public class Servidor {
 
     public void registarLicitador() throws Exception {
         Scanner scanner = new Scanner(System.in);
-        boolean usernameJaExiste = false;
+        boolean usernameJaExiste;
         String username;
         do {
+            usernameJaExiste = false;
             System.out.println("Insira um username");
             username = scanner.nextLine();
             for (Licitador licitador : this.licitadores) {
                 if (licitador.getUsername().equals(username)) {
-                    usernameJaExiste = false;
+                    usernameJaExiste = true;
                     break;
                 }
             }
@@ -87,6 +88,7 @@ public class Servidor {
         double plafond = Double.parseDouble(scanner.nextLine());
         licitadores.add(new Licitador(username, password, plafond));
         atualizarFicheiroLicitadores();
+        System.out.println("Licitador registado");
     }
 
     public synchronized void enviarNotificacoes(String mensagem, String address) throws IOException {
@@ -102,6 +104,12 @@ public class Servidor {
             pedido = input.readLine().split("#");
             switch (Integer.parseInt(pedido[1])) {
                 case Pedido.QUIT:
+                    for (Licitador licitador : this.licitadores) {
+                        if (licitador.getUsername().equals(pedido[0])) {
+                            licitador.desconectar();
+                            break;
+                        }
+                    }
                     enviarNotificacoes("quit", socket.getInetAddress().getHostAddress());
                     System.out.println("O user " + pedido[0] + " desconectou-se");
                     break;
@@ -134,6 +142,7 @@ public class Servidor {
             if (licitador.autenticar(pedido.getUsername(), pedido.getPassword())) {
                 licitador.conectar(socket.getInetAddress().getHostAddress());
                 enviarNotificacoes("Utilizador verificado", licitador.getAddress());
+                System.out.println("O utilizador " + pedido.getUsername() + " foi autenticado.");
                 autenticacaoValida = true;
                 break;
             }
@@ -156,6 +165,7 @@ public class Servidor {
                 }
             }
         }
+        System.out.println("Foi criado um leilao com os seguintes dados.\n" + leilao);
     }
 
     public synchronized void responderLicitacao(Licitacao pedido) throws Exception {
@@ -163,9 +173,11 @@ public class Servidor {
         boolean chegaParaLicitar = false;
         boolean temPlafond = false;
         Licitacao maiorLicitacao = null;
+        Set<String> participantes = new HashSet<String>();
         for (Leilao leilao : this.leiloes) {
-            if (leilao.getId() == pedido.getIdLeilao()) {
+            if (leilao.getId() == pedido.getIdLeilao() && !leilao.terminado()) {
                 leilaoExiste = true;
+                participantes = leilao.getParticipantes();
                 if (leilao.temLicitacoes()) {
                     maiorLicitacao = leilao.getMaiorLicitacao();
                 }
@@ -185,11 +197,12 @@ public class Servidor {
             }
         }
         if (leilaoExiste && chegaParaLicitar && temPlafond) {
+            System.out.println("O licitador " + pedido.getUsername() + " fez uma licitação de " + pedido.getQuantia() + " no leilão " + pedido.getIdLeilao() + ".");
             for (Licitador licitador : this.licitadores) {
                 if (maiorLicitacao != null && licitador.getUsername().equals(maiorLicitacao.getUsername())) {
                     licitador.adicionarDinheiro(maiorLicitacao.getQuantia());
                 }
-                if (licitador.estaConectado()) {
+                if (licitador.estaConectado() && participantes.contains(licitador.getUsername())) {
                     if (licitador.getUsername().equals(pedido.getUsername())) {
                         licitador.retirarDinheiro(pedido.getQuantia());
                         enviarNotificacoes("A sua licitação foi aceite.", licitador.getAddress());
@@ -206,12 +219,15 @@ public class Servidor {
             for (Licitador licitador : this.licitadores) {
                 if (licitador.estaConectado() && licitador.getUsername().equals(pedido.getUsername())) {
                     if (!leilaoExiste) {
+                        System.out.println("O licitador " + pedido.getUsername() + " tentou licitar num leilão que não existe");
                         enviarNotificacoes("O leilão com o ID " + pedido.getIdLeilao() + " não existe ou já não está disponível.", licitador.getAddress());
                     }
                     else if (!chegaParaLicitar) {
+                        System.out.println("O licitador " + pedido.getUsername() + " tentou licitar no leilão com Id " + pedido.getIdLeilao() + " mas o valor da licitação era inferior à maior licitação do leilão");
                         enviarNotificacoes("A sua licitação não foi aceite, o valor proposto não é superior ao máximo atual.", licitador.getAddress());
                         }
                     else if (!temPlafond) {
+                        System.out.println("O licitador " + pedido.getUsername() + " tentou licitar no leilão com Id " + pedido.getIdLeilao() + " mas o valor da licitação era superior ao seu plafond");
                         enviarNotificacoes("A sua solicitação não foi aceite, o valor da sua proposta é superior ao seu plafond.", licitador.getAddress());
                         }
 
@@ -222,6 +238,7 @@ public class Servidor {
     }
 
     public void responderListaLeiloes(Pedido pedido) throws Exception {
+        System.out.println("O licitador " + pedido.getUsername() + " pediu a lista de leilões");
         for (Licitador licitador : licitadores) {
             if (licitador.getUsername().equals(pedido.getUsername())) {
                 String mensagem = "Plafond disponivel: " + licitador.getPlafond() + "\n---------------------------------------------------------------";
@@ -237,6 +254,7 @@ public class Servidor {
     }
 
     public void responderPlafond(Pedido pedido) throws Exception {
+        System.out.println("O licitador " + pedido.getUsername() + " pediu o seu plafond");
         for (Licitador licitador : licitadores) {
             if (licitador.getUsername().equals(pedido.getUsername())) {
                 enviarNotificacoes("O seu plafond atual é de " + licitador.getPlafond() + " euros.", licitador.getAddress());
@@ -276,7 +294,9 @@ public class Servidor {
     }
 
     public void verificarLeiloes() {
-        for (final Leilao leilao : this.leiloes) {
+        Iterator<Leilao> iterator = this.leiloes.iterator();
+        while (iterator.hasNext()) {
+            final Leilao leilao = iterator.next();
             if (leilao.hasFinished() && !leilao.terminado()) {
                 leilao.terminar();
                 Thread thread = new Thread(new Runnable() {

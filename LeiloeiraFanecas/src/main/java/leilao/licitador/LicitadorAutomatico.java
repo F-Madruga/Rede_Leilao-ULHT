@@ -1,4 +1,7 @@
 package leilao.licitador;
+import leilao.Pedido;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 public class LicitadorAutomatico {
 
@@ -9,8 +12,9 @@ public class LicitadorAutomatico {
     private long tempoEspera;
     private double valorInicial;
     private double incrementoLicitacao;
+    private Socket socket;
 
-    public LicitadorAutomatico(String username, String password, int idLeilao, int numeroLicitacoes, long tempoEspera, double valorInicial, double incrementoLicitacao) {
+    public LicitadorAutomatico(String username, String password, int idLeilao, int numeroLicitacoes, long tempoEspera, double valorInicial, double incrementoLicitacao, Socket socket) {
         this.username = username;
         this.password = password;
         this.idLeilao = idLeilao;
@@ -18,6 +22,7 @@ public class LicitadorAutomatico {
         this.tempoEspera = tempoEspera;
         this.valorInicial = valorInicial;
         this.incrementoLicitacao = incrementoLicitacao;
+        this.socket = socket;
     }
 
     public String getUsername() {
@@ -56,6 +61,14 @@ public class LicitadorAutomatico {
         this.password = password;
     }
 
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public void enviarPedido(Pedido pedido) throws Exception {
+        PrintWriter output = new PrintWriter(this.socket.getOutputStream(), true);
+        output.println(pedido);
+    }
     @Override
     public String toString() {
         return "Username - " + this.username + "\nId leilao - " + this.idLeilao + "\nNumero de licitacoes - " + this.numeroLicitacoes + "\nTempo entre licitacoes - " + this.tempoEspera + "ms\nValor da primeira licitação - " + this.valorInicial + "\nIncremento das licitações - " + this.incrementoLicitacao + "\n";

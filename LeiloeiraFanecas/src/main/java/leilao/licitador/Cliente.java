@@ -18,76 +18,96 @@ public class Cliente {
 
     private DatagramSocket inputSocket;
     private Socket outputSocket;
+    private String ip;
+    private int port;
 
     public Cliente(String ip, int port) throws Exception {
+        this.ip = ip;
+        this.port = port;
         this.inputSocket = new DatagramSocket(port);
         this.outputSocket = new Socket(ip, port);
     }
 
     public void start() throws Exception {
+        int resposta;
+        do {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Escolha uma opção");
+            System.out.println("1 - Modo manual");
+            System.out.println("2 - Modo automatico");
+            System.out.println("3 - Quit");
+            resposta = Integer.parseInt(scanner.nextLine());
+            switch (resposta) {
+                case 1:
+                    iniciarModoManual();
+                    break;
+                case 2:
+                    iniciarModoAutomatico();
+                    break;
+            }
+        } while (resposta != 3);
+    }
+
+    public void iniciarModoManual() throws Exception {
         Scanner scanner = new Scanner(System.in);
+        String username;
+        String password;
+        do {
+            System.out.println("Insira um username");
+            username = scanner.nextLine();
+            System.out.println("Insira uma password");
+            password = scanner.nextLine();
+        } while (!autenticar(username, password));
         Thread threadReceberNotificacoes = new Thread(new Runnable() {
             public void run() {
                 String resposta = "";
                 do {
                     try {
                         resposta = receberNotificacoes();
-                        System.out.println(resposta);
+                        if (!resposta.equals("quit")) {
+                            System.out.println(resposta);
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 } while (!resposta.equals("quit"));
             }
         });
-        System.out.println("Escolha uma opção");
-        System.out.println("1 - Modo manual");
-        System.out.println("2 - Modo automatico");
-        int resposta = Integer.parseInt(scanner.nextLine());
-        switch (resposta) {
-            case 1:
-                String username;
-                String password;
-                do {
-                    System.out.println("Insira um username");
-                    username = scanner.nextLine();
-                    System.out.println("Insira uma password");
-                    password = scanner.nextLine();
-                } while (!autenticar(username, password));
-                threadReceberNotificacoes.start();
-                selecionarPedido(username);
-                break;
-            case 2:
-                System.out.println("Quantos licitadores quer iniciar?");
-                List<LicitadorAutomatico> licitadoresAutomaticos = autenticarLicitadoresAutomaticos(Integer.parseInt(scanner.nextLine()));
-                threadReceberNotificacoes.start();
-                for (final LicitadorAutomatico licitadorAutomatico : licitadoresAutomaticos) {
-                    System.out.println(licitadorAutomatico);
-                    Thread threadPedidoAutomaticos = new Thread(new Runnable() {
-                        public void run() {
-                            try {
-                                fazerPedidosAutomaticos(licitadorAutomatico);
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                    threadPedidoAutomaticos.start();
+        threadReceberNotificacoes.start();
+        selecionarPedido(username);
+    }
+
+    public void iniciarModoAutomatico() throws Exception {
+        List<LicitadorAutomatico> licitadoresAutomaticos = autenticarLicitadoresAutomaticos();
+        for (final LicitadorAutomatico licitadorAutomatico : licitadoresAutomaticos) {
+            System.out.println(licitadorAutomatico);
+            Thread threadPedidoAutomaticos = new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        fazerPedidosAutomaticos(licitadorAutomatico);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-                break;
+            });
+            threadPedidoAutomaticos.start();
         }
     }
 
     public void fazerPedidosAutomaticos(LicitadorAutomatico licitadorAutomatico) throws Exception {
-        PrintWriter output = new PrintWriter(outputSocket.getOutputStream(), true);
         for (int i = 0; i < licitadorAutomatico.getNumeroLicitacoes(); i++) {
-            output.println(new Licitacao(licitadorAutomatico.getUsername(), licitadorAutomatico.getValorInicial() + (licitadorAutomatico.getIncrementoLicitacao() * i), licitadorAutomatico.getIdLeilao()));
+            licitadorAutomatico.enviarPedido(new Licitacao(licitadorAutomatico.getUsername(), licitadorAutomatico.getValorInicial() + (licitadorAutomatico.getIncrementoLicitacao() * i), licitadorAutomatico.getIdLeilao()));
             long tempoInicial = System.currentTimeMillis();
             while (tempoInicial + licitadorAutomatico.getTempoEspera() > System.currentTimeMillis());
         }
+        licitadorAutomatico.enviarPedido(new Pedido(licitadorAutomatico.getUsername(), Pedido.QUIT));
     }
 
-    public List<LicitadorAutomatico> autenticarLicitadoresAutomaticos(int numeroLicitadores) throws Exception {
+    public List<LicitadorAutomatico> autenticarLicitadoresAutomaticos() throws Exception {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Quantos licitadores quer iniciar?");
+        int numeroLicitadores = Integer.parseInt(scanner.nextLine());
+        Socket outputSocket = new Socket(ip, port);
         List<LicitadorAutomatico> licitadoresAutomaticos = new ArrayList<LicitadorAutomatico>();
         for (int i = 1; i <= numeroLicitadores; i++) {
             System.out.println("Insira o username do cliente " + i);
@@ -104,7 +124,7 @@ public class Cliente {
             double valorInicial = Integer.parseInt(scanner.nextLine());
             System.out.println("Insira o valor a incrementar às licitações ao cliente " + i);
             double incremento = Double.parseDouble(scanner.nextLine());
-            LicitadorAutomatico licitadorAutomatico = new LicitadorAutomatico(user, pass, idLeilao, numeroLicitacoes, tempoEspera, valorInicial, incremento);
+            LicitadorAutomatico licitadorAutomatico = new LicitadorAutomatico(user, pass, idLeilao, numeroLicitacoes, tempoEspera, valorInicial, incremento, outputSocket);
             while (!autenticar(licitadorAutomatico.getUsername(), licitadorAutomatico.getPassword())) {
                 System.out.println("Insira de novo o username do cliente " + i);
                 licitadorAutomatico.setUsername(scanner.nextLine());
@@ -139,7 +159,7 @@ public class Cliente {
         System.out.println("2 - Criar Leilão");
         System.out.println("3 - Listar Leilões");
         System.out.println("4 - Plafond");
-        System.out.println("5 - quit");
+        System.out.println("5 - Quit");
         do {
             resposta = scanner.nextLine();
             switch (Integer.parseInt(resposta)) {
