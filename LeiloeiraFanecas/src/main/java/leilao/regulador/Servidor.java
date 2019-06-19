@@ -294,15 +294,14 @@ public class Servidor {
     }
 
     public void verificarLeiloes() {
-        Iterator<Leilao> iterator = this.leiloes.iterator();
-        while (iterator.hasNext()) {
-            final Leilao leilao = iterator.next();
-            if (leilao.hasFinished() && !leilao.terminado()) {
-                leilao.terminar();
+        for (int i = 0; i < this.leiloes.size(); i++){
+            if (leiloes.get(i).hasFinished() && !leiloes.get(i).terminado()) {
+                leiloes.get(i).terminar();
+                final int j = i;
                 Thread thread = new Thread(new Runnable() {
                     public void run() {
                         try {
-                            fecharLeiloes(leilao);
+                            fecharLeiloes(leiloes.get(j));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
