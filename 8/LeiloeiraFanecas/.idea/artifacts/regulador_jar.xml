@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="regulador:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/regulador_jar</output-path>
+    <root id="archive" name="regulador.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/resources/Servidor/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="LeiloeiraFanecas" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.12/commons-codec-1.12.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
