@@ -207,7 +207,7 @@ public class Servidor {
                 if (maiorLicitacao != null && licitador.getUsername().equals(maiorLicitacao.getUsername())) {
                     licitador.adicionarDinheiro(maiorLicitacao.getQuantia());
                 }
-                if (licitador.estaConectado() && (participantes.contains(licitador.getUsername()) || licitador.equals(autor))) {
+                if (licitador.estaConectado() && (participantes.contains(licitador.getUsername()) || licitador.getUsername().equals(autor))) {
                     if (licitador.getUsername().equals(pedido.getUsername())) {
                         licitador.retirarDinheiro(pedido.getQuantia());
                         enviarNotificacoes("A sua licitação foi aceite.", licitador.getAddress());

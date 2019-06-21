@@ -11,12 +11,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/licitador_jar/licitador.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/regulador_jar/regulador.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/leilao/regulador/Leilao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leilao/regulador/Leilao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Leilao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Leilao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/leilao/regulador/Servidor.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -32,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+            <state relative-caret-position="768">
+              <caret line="173" column="83" selection-start-line="173" selection-start-column="83" selection-end-line="173" selection-end-column="83" />
               <folding>
                 <element signature="method#Servidor#0;class#Servidor#0" />
                 <element signature="method#start#0;class#Servidor#0" />
@@ -62,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Leilao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1537">
-              <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
+            <state relative-caret-position="464">
+              <caret line="21" column="88" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Leilao#0;class#Leilao#0" />
@@ -76,37 +71,103 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/leilao/licitador/Cliente.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/SHA256.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+            <state relative-caret-position="116">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#start#0;class#Cliente#0" />
-                <element signature="method#iniciarModoManual#0;class#Cliente#0" />
-                <element signature="method#iniciarModoAutomatico#0;class#Cliente#0" />
-                <element signature="method#fazerPedidosAutomaticos#0;class#Cliente#0" />
-                <element signature="method#autenticarLicitadoresAutomaticos#0;class#Cliente#0" />
-                <element signature="method#receberNotificacoes#0;class#Cliente#0" />
-                <element signature="method#autenticar#0;class#Cliente#0" />
-                <element signature="method#selecionarPedido#0;class#Cliente#0" />
-                <element signature="method#fazerLicitacao#0;class#Cliente#0" />
-                <element signature="method#criarLeilao#0;class#Cliente#0" />
-                <element signature="method#pedirLeiloes#0;class#Cliente#0" />
-                <element signature="method#pedirPlafond#0;class#Cliente#0" />
-                <element signature="method#quit#0;class#Cliente#0" />
+                <element signature="method#generate#0;class#SHA256#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/leilao/Autenticacao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="232">
+              <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+              <folding>
+                <element signature="method#Autenticacao#0;class#Autenticacao#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/leilao/Licitacao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="58">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <folding>
+                <element signature="method#Licitacao#0;class#Licitacao#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/leilao/Pedido.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="method#Pedido#0;class#Pedido#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/leilao/PedidoCriarLeilao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
+            <state relative-caret-position="580">
               <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
               <folding>
                 <element signature="method#PedidoCriarLeilao#0;class#PedidoCriarLeilao#0" />
+                <element signature="method#toString#0;class#PedidoCriarLeilao#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Licitador.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#Licitador#0;class#Licitador#0" />
+                <element signature="method#autenticar#0;class#Licitador#0" />
+                <element signature="method#conectar#0;class#Licitador#0" />
+                <element signature="method#desconectar#0;class#Licitador#0" />
+                <element signature="method#toString#0;class#Licitador#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="4" column="60" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
+              <folding>
+                <element signature="method#main#0;class#Main#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Serializador.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding>
+                <element signature="method#serialize#0;class#Serializador#0" />
+                <element signature="method#deserialize#0;class#Serializador#0" />
               </folding>
             </state>
           </provider>
@@ -163,7 +224,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -249,7 +310,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -343,7 +404,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="52" width="2736" height="1772" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2790347" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29185522" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -380,6 +441,30 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Licitacao.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/licitador/Cliente.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Cliente#0;class#Cliente#0" />
+            <element signature="method#start#0;class#Cliente#0" />
+            <element signature="method#iniciarModoManual#0;class#Cliente#0" />
+            <element signature="method#iniciarModoAutomatico#0;class#Cliente#0" />
+            <element signature="method#fazerPedidosAutomaticos#0;class#Cliente#0" />
+            <element signature="method#autenticarLicitadoresAutomaticos#0;class#Cliente#0" />
+            <element signature="method#receberNotificacoes#0;class#Cliente#0" />
+            <element signature="method#autenticar#0;class#Cliente#0" />
+            <element signature="method#selecionarPedido#0;class#Cliente#0" />
+            <element signature="method#fazerLicitacao#0;class#Cliente#0" />
+            <element signature="method#criarLeilao#0;class#Cliente#0" />
+            <element signature="method#pedirLeiloes#0;class#Cliente#0" />
+            <element signature="method#pedirPlafond#0;class#Cliente#0" />
+            <element signature="method#quit#0;class#Cliente#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/leilao/licitador/LicitadorAutomatico.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1160">
@@ -403,10 +488,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Leilao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="21" column="88" selection-start-line="21" selection-start-column="88" selection-end-line="21" selection-end-column="88" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Leilao#0;class#Leilao#0" />
+            <element signature="method#chegaParaLicitar#0;class#Leilao#0" />
+            <element signature="method#licitar#0;class#Leilao#0" />
+            <element signature="method#toString#0;class#Leilao#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Licitador.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
+        <state relative-caret-position="319">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Licitador#0;class#Licitador#0" />
@@ -435,6 +534,31 @@
           <folding>
             <element signature="method#serialize#0;class#Serializador#0" />
             <element signature="method#deserialize#0;class#Serializador#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="768">
+          <caret line="173" column="83" selection-start-line="173" selection-start-column="83" selection-end-line="173" selection-end-column="83" />
+          <folding>
+            <element signature="method#Servidor#0;class#Servidor#0" />
+            <element signature="method#start#0;class#Servidor#0" />
+            <element signature="method#registarLicitador#0;class#Servidor#0" />
+            <element signature="method#enviarNotificacoes#0;class#Servidor#0" />
+            <element signature="method#reendirecionarPedido#0;class#Servidor#0" />
+            <element signature="method#responderAutenticacao#0;class#Servidor#0" />
+            <element signature="method#responderCriarLeilao#0;class#Servidor#0" />
+            <element signature="method#responderLicitacao#0;class#Servidor#0" />
+            <element signature="method#responderListaLeiloes#0;class#Servidor#0" />
+            <element signature="method#responderPlafond#0;class#Servidor#0" />
+            <element signature="method#lerFicheiroLeiloes#0;class#Servidor#0" />
+            <element signature="method#lerFicheiroLicitadores#0;class#Servidor#0" />
+            <element signature="method#atualizarFicheiroLeiloes#0;class#Servidor#0" />
+            <element signature="method#atualizarFicheiroLicitadores#0;class#Servidor#0" />
+            <element signature="method#verificarLeiloes#0;class#Servidor#0" />
+            <element signature="method#fecharLeiloes#0;class#Servidor#0" />
           </folding>
         </state>
       </provider>
@@ -479,74 +603,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Servidor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
-          <folding>
-            <element signature="method#Servidor#0;class#Servidor#0" />
-            <element signature="method#start#0;class#Servidor#0" />
-            <element signature="method#registarLicitador#0;class#Servidor#0" />
-            <element signature="method#enviarNotificacoes#0;class#Servidor#0" />
-            <element signature="method#reendirecionarPedido#0;class#Servidor#0" />
-            <element signature="method#responderAutenticacao#0;class#Servidor#0" />
-            <element signature="method#responderCriarLeilao#0;class#Servidor#0" />
-            <element signature="method#responderLicitacao#0;class#Servidor#0" />
-            <element signature="method#responderListaLeiloes#0;class#Servidor#0" />
-            <element signature="method#responderPlafond#0;class#Servidor#0" />
-            <element signature="method#lerFicheiroLeiloes#0;class#Servidor#0" />
-            <element signature="method#lerFicheiroLicitadores#0;class#Servidor#0" />
-            <element signature="method#atualizarFicheiroLeiloes#0;class#Servidor#0" />
-            <element signature="method#atualizarFicheiroLicitadores#0;class#Servidor#0" />
-            <element signature="method#verificarLeiloes#0;class#Servidor#0" />
-            <element signature="method#fecharLeiloes#0;class#Servidor#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/regulador/Leilao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1537">
-          <caret line="93" column="29" selection-start-line="93" selection-start-column="29" selection-end-line="93" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Leilao#0;class#Leilao#0" />
-            <element signature="method#chegaParaLicitar#0;class#Leilao#0" />
-            <element signature="method#licitar#0;class#Leilao#0" />
-            <element signature="method#toString#0;class#Leilao#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/leilao/licitador/Cliente.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#start#0;class#Cliente#0" />
-            <element signature="method#iniciarModoManual#0;class#Cliente#0" />
-            <element signature="method#iniciarModoAutomatico#0;class#Cliente#0" />
-            <element signature="method#fazerPedidosAutomaticos#0;class#Cliente#0" />
-            <element signature="method#autenticarLicitadoresAutomaticos#0;class#Cliente#0" />
-            <element signature="method#receberNotificacoes#0;class#Cliente#0" />
-            <element signature="method#autenticar#0;class#Cliente#0" />
-            <element signature="method#selecionarPedido#0;class#Cliente#0" />
-            <element signature="method#fazerLicitacao#0;class#Cliente#0" />
-            <element signature="method#criarLeilao#0;class#Cliente#0" />
-            <element signature="method#pedirLeiloes#0;class#Cliente#0" />
-            <element signature="method#pedirPlafond#0;class#Cliente#0" />
-            <element signature="method#quit#0;class#Cliente#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/leilao/PedidoCriarLeilao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
+        <state relative-caret-position="580">
           <caret line="34" column="1" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
           <folding>
             <element signature="method#PedidoCriarLeilao#0;class#PedidoCriarLeilao#0" />
+            <element signature="method#toString#0;class#PedidoCriarLeilao#0" />
           </folding>
         </state>
       </provider>
