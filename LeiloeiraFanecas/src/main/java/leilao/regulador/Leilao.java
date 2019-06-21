@@ -93,10 +93,10 @@ public class Leilao implements Serializable {
     @Override
     public String toString() {
         if (maiorLicitacao != null) {
-            return this.id + " " + this.objeto + " " + dataFecho.getTime() + " " + maiorLicitacao.getQuantia() + " " + maiorLicitacao.getUsername();
+            return this.id + " " + this.objeto + " " + String.format("%02d", dataFecho.get(Calendar.DATE)) + "/" + String.format("%02d", (dataFecho.get(Calendar.MONTH) + 1)) + "/" + dataFecho.get(Calendar.YEAR) + " " + String.format("%02d", dataFecho.get(Calendar.HOUR_OF_DAY)) + ":" + String.format("%02d", dataFecho.get(Calendar.MINUTE)) + ":" + String.format("%02d", dataFecho.get(Calendar.SECOND)) + " " + maiorLicitacao.getQuantia() + " " + maiorLicitacao.getUsername();
         }
         else {
-            return this.id + " " + this.objeto + " " + dataFecho.getTime() + " " + valorInicial + " " + autor;
+            return this.id + " " + this.objeto + " " + String.format("%02d", dataFecho.get(Calendar.DATE)) + "/" + String.format("%02d", (dataFecho.get(Calendar.MONTH) + 1)) + "/" + dataFecho.get(Calendar.YEAR) + " " + String.format("%02d", dataFecho.get(Calendar.HOUR_OF_DAY)) + ":" + String.format("%02d", dataFecho.get(Calendar.MINUTE)) + ":" + String.format("%02d", dataFecho.get(Calendar.SECOND)) + " " + valorInicial + " " + autor;
         }
     }
 }
